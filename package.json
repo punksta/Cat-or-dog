@@ -1,0 +1,48 @@
+{
+  "name": "sortgame",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest",
+    "prettier": "prettier --write \"{src,__{tests,mocks}__}/**/*.js\"",
+    "flow": "flow check",
+    "icon-generate": "app-icon generate --platforms=android"
+  },
+  "rnpm": {
+    "assets": [
+      "./assets/fonts/"
+    ]
+  },
+  "dependencies": {
+    "memoizee": "^0.4.12",
+    "react": "^16.4.1",
+    "react-native": "^0.56.0",
+    "react-native-console-time-polyfill": "0.0.6",
+    "react-native-gesture-handler": "^1.0.7",
+    "react-native-linear-gradient": "^2.4.0",
+    "react-native-material-menu": "^0.4.0",
+    "react-native-popup-dialog": "^0.15.0",
+    "react-native-reanimated": "^1.0.0-alpha.6",
+    "react-navigation": "^2.6.0",
+    "react-redux": "^5.0.7",
+    "recompose": "^0.27.1",
+    "redux": "^4.0.0",
+    "redux-logger": "^3.0.6",
+    "redux-observable": "^0.18.0",
+    "redux-persist": "^5.10.0",
+    "rxjs": "^5.5.11"
+  },
+  "devDependencies": {
+    "app-icon": "^0.6.3",
+    "babel-jest": "23.0.1",
+    "babel-preset-react-native": "5.0.2",
+    "flow-bin": "^0.75.0",
+    "jest": "23.0.1",
+    "prettier": "^1.13.7",
+    "react-test-renderer": "16.3.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
