@@ -39,7 +39,7 @@ const Info = ({scrollViewRef}) => {
 						fontSize: 12
 					}}
 				>
-					version: 1.0.2
+					version: 1.0.3
 				</Text>
 
 				<View style={{}}>

@@ -101,8 +101,8 @@ android {
         applicationId "com.punksta.apps.sortgame"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 2
-        versionName "1.0.2"
+        versionCode 4
+        versionName "1.0.3"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
