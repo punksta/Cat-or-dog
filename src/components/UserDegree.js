@@ -98,7 +98,7 @@ const UserDegree = ({
 								marginBottom: 4
 							}}
 						>
-							get {nextUserDegree.passingScore} score to be
+							get a score of {nextUserDegree.passingScore} to become
 						</Text>
 						<Text
 							style={{
