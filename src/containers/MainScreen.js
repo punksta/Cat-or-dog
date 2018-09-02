@@ -5,6 +5,7 @@ import MainScreenButtons from "../components/MainScreenButtons";
 import HomeScreenBackground from "../components/HomeScreenBackground";
 import Info from "../components/Info";
 import AppearOnMount from "../components/AppearOnMount";
+import ConnectedUserDegree from "../components/ConnectedUserDegree";
 
 import PopupDialog, {SlideAnimation} from "react-native-popup-dialog";
 
@@ -21,8 +22,9 @@ const MainScreen = ({
 	return (
 		<View
 			style={{
-				flex: 1,
-				justifyContent: "center"
+				flexDirection: "column",
+				justifyContent: "center",
+				flex: 1
 			}}
 		>
 			<View
@@ -36,17 +38,30 @@ const MainScreen = ({
 			</View>
 
 			<AppearOnMount>
-				<MainScreenButtons
-					isCustomGameVisible
-					isLevelsVisible={false}
-					onCofigureGameClick={onCofigureGameClick}
-					onRatingClick={ratingsClick}
-					onInfoClick={() => {
-						this.scrollView.scrollTo({y: 0, animated: false});
-						this.popupDialog.show();
+				<View
+					style={{
+						alignItems: "center",
+						marginBottom: "10%"
 					}}
-					newGameClick={newGameClick}
-				/>
+				>
+					<ConnectedUserDegree
+						style={{
+							marginBottom: 16
+						}}
+					/>
+
+					<MainScreenButtons
+						isCustomGameVisible
+						isLevelsVisible={false}
+						onCofigureGameClick={onCofigureGameClick}
+						onRatingClick={ratingsClick}
+						onInfoClick={() => {
+							this.scrollView.scrollTo({y: 0, animated: false});
+							this.popupDialog.show();
+						}}
+						newGameClick={newGameClick}
+					/>
+				</View>
 			</AppearOnMount>
 
 			<PopupDialog
