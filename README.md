@@ -1,7 +1,10 @@
 # Cat or Dog?
 Mobile game where you need swipe photos of animals to match categories. I've made it just for fun and as some `Animated` api epxercise. 
 
-<iframe width="253" height="400" src="https://www.youtube.com/embed/Gt7zs4TfBrc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+youtube video:
+<div align="center">
+  <a href="https://www.youtube.com/embed/Gt7zs4TfBrc"><img height="250" src="https://img.youtube.com/vi/Gt7zs4TfBrc/0.jpg" alt="video link"></a>
+</div>
 
 ### build with
 react-native, redux, [react-native-gesture-handler](https://github.com/kmagiera/react-native-gesture-handler).
