@@ -2,13 +2,13 @@ import * as React from "react";
 import {StyleSheet, Image, Text, View} from "react-native";
 import TouchableBounce from "react-native/Libraries/Components/Touchable/TouchableBounce.js";
 
-import type {UserDegree} from "../data/userDegree";
+import type {UserDegree as UserDegreeType} from "../data/userDegree";
 import LinearGradient from "react-native-linear-gradient";
 
 type Props = {
 	bestScore: number,
-	currentUserDegree: UserDegree,
-	nextUserDegree?: UserDegree
+	currentUserDegree: UserDegreeType,
+	nextUserDegree?: UserDegreeType
 };
 
 const UserDegree = ({
