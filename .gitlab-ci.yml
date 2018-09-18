@@ -19,6 +19,10 @@ build:android:
 
   before_script:
   - export GRADLE_USER_HOME=${CI_PROJECT_DIR}/.gradle
+  - curl -sL https://deb.nodesource.com/setup_8.x | bash
+  - apt-get install -y nodejs
+  - npm install -g npm@6.4.1 react-native-cli
+
 
   script:
   - npm ci
