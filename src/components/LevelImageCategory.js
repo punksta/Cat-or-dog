@@ -5,7 +5,7 @@ import {View, Image, Text} from "react-native";
 type Props = {
 	propertyName: string,
 	source: any,
-	style: any
+	style?: any
 };
 
 const LevelCategory = ({propertyName, source, style}: Props) => {

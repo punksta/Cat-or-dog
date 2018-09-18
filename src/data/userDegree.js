@@ -1,7 +1,5 @@
 // @flow
 
-import index from "../epics";
-
 export type UserDegree = {
 	name: string,
 	passingScore: number,

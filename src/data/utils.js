@@ -13,11 +13,11 @@ export const getRatioOfImage = (imageId: number): number => {
 	return width / height;
 };
 
-export function getRandomIndex(size: number) {
+export function getRandomIndex(size: number): number {
 	return Math.floor(Math.random() * size);
 }
 
-export function getRandomElement<T>(array: Array<T>) {
+export function getRandomElement<T>(array: Array<T>): T {
 	return array[getRandomIndex(array.length)];
 }
 

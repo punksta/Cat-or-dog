@@ -1,3 +1,5 @@
+// @flow
+
 import * as React from "react";
 import {
 	Image,
@@ -17,7 +19,8 @@ import LevelImageCategory from "./LevelImageCategory";
 type RenderLevelProps = {
 	level: Level,
 	isLocked: boolean,
-	onLevelClick: (Level, number) => void
+	onLevelClick: (Level, number) => void,
+	levelIndex: number
 };
 
 const RenderLevel = ({
@@ -26,7 +29,6 @@ const RenderLevel = ({
 	onLevelClick,
 	levelIndex
 }: RenderLevelProps) => {
-	const Component = isLocked ? View : TouchableOpacity;
 	return (
 		<View
 			style={{
@@ -34,7 +36,8 @@ const RenderLevel = ({
 				width: "100%"
 			}}
 		>
-			<Component
+			<TouchableOpacity
+				disabled={isLocked}
 				onPress={onLevelClick.bind(undefined, level, levelIndex)}
 				style={{
 					flexDirection: "row",
@@ -100,7 +103,7 @@ const RenderLevel = ({
 						propertyName={level.rightCategory}
 					/>
 				</View>
-			</Component>
+			</TouchableOpacity>
 			{isLocked && (
 				<LockedLabel
 					style={{
