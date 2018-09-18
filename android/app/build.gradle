@@ -117,9 +117,8 @@ android {
     }
 
       signingConfigs {
-
                debug {
-                     storeFile new File("/home/stanislav/.android/debug.keystore")
+                     storeFile new File(System.getProperty("user.home"), ".android/debug.keystore")
                      storePassword "android"
                      keyAlias "AndroidDebugKey"
                      keyPassword "android"
