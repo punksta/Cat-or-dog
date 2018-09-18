@@ -161,12 +161,10 @@ const styles = StyleSheet.create({
 	},
 	gradient: {
 		paddingTop: 30,
-		paddingTop: 30,
 		padding: 20,
 		width: "100%",
 		position: "absolute",
 		bottom: 0,
-		width: "100%"
 	}
 });
 
