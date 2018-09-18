@@ -149,7 +149,6 @@ android {
 
 dependencies {
     compile project(':react-native-gesture-handler')
-    compile project(':react-native-reanimated')
     compile project(':react-native-linear-gradient')
     compile fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:27.1.1"
