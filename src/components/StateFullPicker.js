@@ -1,12 +1,19 @@
 import * as React from "react";
-import Menu, {MenuItem, MenuDivider} from "react-native-material-menu";
+import Menu, {MenuItem} from "react-native-material-menu";
 import {
 	StyleSheet,
 	Image,
 	TouchableNativeFeedback,
+	TouchableWithoutFeedback,
+	Platform,
 	Text,
 	View
 } from "react-native";
+
+const TouchableComponent = Platform.select({
+	android: TouchableNativeFeedback,
+	default: TouchableWithoutFeedback
+});
 
 class StateFullPicker extends React.Component {
 	menuRef = React.createRef();
@@ -29,7 +36,7 @@ class StateFullPicker extends React.Component {
 
 		return (
 			<View style={containerStyle}>
-				<TouchableNativeFeedback onPress={this.showMenu}>
+				<TouchableComponent onPress={this.showMenu}>
 					<View
 						style={{
 							flex: 1,
@@ -61,7 +68,7 @@ class StateFullPicker extends React.Component {
 							source={require("../img/dropdown.png")}
 						/>
 					</View>
-				</TouchableNativeFeedback>
+				</TouchableComponent>
 				<Menu
 					style={menuStyle}
 					ref={this.menuRef}
