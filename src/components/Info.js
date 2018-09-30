@@ -109,7 +109,7 @@ const Info = ({scrollViewRef}) => {
 				</Text>
 				{photoSources.map(image => {
 					return (
-						<View>
+						<View key={image.resource}>
 							<Image
 								style={{
 									height: 150,

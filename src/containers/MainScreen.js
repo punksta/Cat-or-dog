@@ -65,8 +65,8 @@ const MainScreen = ({
 			</AppearOnMount>
 
 			<PopupDialog
-				width={"90%"}
-				height={"70%"}
+				width={0.9}
+				height={0.7}
 				dialogAnimation={slideAnimation}
 				ref={popupDialog => {
 					this.popupDialog = popupDialog;
