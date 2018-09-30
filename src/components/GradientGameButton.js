@@ -19,7 +19,7 @@ const GradientGameButton = ({title, onPress}: Props) => {
 				locations={[0.1, 0.9]}
 				colors={["#d66a41", "#f2b448"]}
 				style={{
-					overflow: 'hidden',
+					overflow: "hidden",
 					borderRadius: 30,
 					// borderColor: 'white',
 					width: "100%",

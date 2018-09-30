@@ -33,8 +33,8 @@ const UserDegree = ({
 				colors={["#d66a41", "#f2b448"]}
 				style={[
 					{
-                        overflow: 'hidden',
-                        backgroundColor: "white",
+						overflow: "hidden",
+						backgroundColor: "white",
 						borderRadius: 50,
 						paddingHorizontal: 25,
 						paddingTop: 8,
