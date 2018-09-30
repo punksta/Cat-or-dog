@@ -56,7 +56,7 @@ const ListAndPicker = ({
 						<PreviewItem
 							item={item}
 							style={{
-								borderRadius: Math.min(width, width / item.ratio),
+								borderRadius: Math.min(width, width / item.ratio) / 2,
 								padding: 50,
 								marginBottom: 8,
 								marginTop: 8,
