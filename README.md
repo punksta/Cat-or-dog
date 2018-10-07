@@ -1,4 +1,6 @@
 # Cat or Dog?
+[![pipeline status](https://gitlab.com/punksta/cat-or-dog-ci/badges/master/pipeline.svg)](https://gitlab.com/punksta/cat-or-dog-ci/commits/master)
+
 Mobile game where you need swipe photos of animals to match categories. I've made it just for fun and as some `Animated` api epxercise. 
 
 youtube video:
