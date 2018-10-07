@@ -11,17 +11,13 @@ test:flow:
   - npm ci
   - npm run flow
 
-
 build:android:
-  image: jangrewe/gitlab-ci-android
+  image: punksta/gitlab-ci-android-rn
   stage: build
   variables: {}
 
   before_script:
   - export GRADLE_USER_HOME=${CI_PROJECT_DIR}/.gradle
-  - curl -sL https://deb.nodesource.com/setup_8.x | bash
-  - apt-get install -y nodejs
-  - npm install -g npm@6.4.1 react-native-cli
    # https://stackoverflow.com/questions/22475849/node-js-error-enospc/32600959#32600959
   - echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf && sysctl -p
 
