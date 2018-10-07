@@ -17,7 +17,7 @@
   "dependencies": {
     "memoizee": "^0.4.12",
     "react": "^16.5.0",
-    "react-native": "^0.57.0",
+    "react-native": "^0.57.2",
     "react-native-console-time-polyfill": "0.0.6",
     "react-native-gesture-handler": "^1.0.7",
     "react-native-linear-gradient": "^2.4.0",
@@ -36,7 +36,7 @@
     "app-icon": "^0.6.3",
     "babel-jest": "23.0.1",
     "babel-core": "7.0.0-bridge.0",
-    "metro-react-native-babel-preset": "^0.45.0",
+    "metro-react-native-babel-preset": "^0.48.0",
     "flow-bin": "^0.76.0",
     "jest": "23.2.0",
     "prettier": "^1.13.7",
