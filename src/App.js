@@ -1,18 +1,16 @@
-import {NavigationActions} from "react-navigation";
-
-import {Provider, connect} from "react-redux";
 import React from "react";
-import AppNavigator from "./navigation/AppNavigator";
-import {BackHandler, ImageBackground} from "react-native";
 
-import {PersistGate} from "redux-persist/integration/react";
+import {ImageBackground} from "react-native";
 
-import configureStore from "./configureStore";
 import {createNavigationService} from "./navigation/NavigationService";
 
 const navigationService = createNavigationService();
 
-const {store, persistor} = configureStore(navigationService);
+let store;
+let persistor;
+let Navigator;
+let PersistGate;
+let Provider;
 
 class NavigatorHolder extends React.Component {
 	// componentDidMount() {
@@ -40,7 +38,7 @@ class NavigatorHolder extends React.Component {
 
 	render() {
 		return (
-			<AppNavigator
+			<Navigator
 				onNavigationStateChange={(...args) =>
 					navigationService.onChangeNavigationState(...args)
 				}
@@ -51,7 +49,31 @@ class NavigatorHolder extends React.Component {
 	}
 }
 
+const initStore = () => {
+	const configureStore = require("./configureStore").default;
+	const r = configureStore(navigationService);
+	persistor = r.persistor;
+	store = r.store;
+};
+
+const initNavigator = () => {
+	Navigator = require("./navigation/AppNavigator").default;
+	PersistGate = require("redux-persist/integration/react").PersistGate;
+	Provider = require("react-redux").Provider;
+};
+
 export default class Root extends React.Component {
+	state = {
+		loaded: false
+	};
+
+	componentDidMount() {
+        initStore();
+        initNavigator();
+        this.setState({
+            loaded: true
+        });
+	}
 	render() {
 		return (
 			<ImageBackground
@@ -60,11 +82,13 @@ export default class Root extends React.Component {
 				}}
 				source={require("./img/background.png")}
 			>
-				<Provider store={store}>
-					<PersistGate persistor={persistor}>
-						<NavigatorHolder />
-					</PersistGate>
-				</Provider>
+				{this.state.loaded && (
+					<Provider store={store}>
+						<PersistGate persistor={persistor}>
+							<NavigatorHolder />
+						</PersistGate>
+					</Provider>
+				)}
 			</ImageBackground>
 		);
 	}
