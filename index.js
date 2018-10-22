@@ -6,7 +6,7 @@ import {isDebug} from "./src/utils/debugUtils";
 
 AppRegistry.registerComponent("sortGame", () => App);
 
-if (isDebug) {
+if (isDebug()) {
 	const modules = require.getModules();
 	const moduleIds = Object.keys(modules);
 	const loadedModuleNames = moduleIds
