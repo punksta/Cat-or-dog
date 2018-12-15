@@ -11,7 +11,7 @@ type Props = {
 	nextUserDegree?: UserDegree
 };
 
-const UserDegree = ({
+const UserDegreeComponent = ({
 	bestScore,
 	currentUserDegree,
 	nextUserDegree,
@@ -116,4 +116,4 @@ const UserDegree = ({
 	);
 };
 
-export default UserDegree;
+export default UserDegreeComponent;

@@ -16,8 +16,8 @@
   },
   "dependencies": {
     "memoizee": "^0.4.12",
-    "react": "^16.4.1",
-    "react-native": "^0.56.0",
+    "react": "^16.6.3",
+    "react-native": "^0.57.8",
     "react-native-console-time-polyfill": "0.0.6",
     "react-native-gesture-handler": "^1.0.12",
     "react-native-linear-gradient": "^2.5.3",
@@ -36,11 +36,12 @@
   "devDependencies": {
     "app-icon": "^0.6.3",
     "babel-jest": "23.0.1",
-    "babel-preset-react-native": "5.0.2",
+    "babel-core": "7.0.0-bridge.0",
+    "metro-react-native-babel-preset": "^0.50.0",
     "flow-bin": "^0.75.0",
     "jest": "23.0.1",
     "prettier": "^1.13.7",
-    "react-test-renderer": "16.3.1"
+    "react-test-renderer": "16.6.3"
   },
   "jest": {
     "preset": "react-native"
