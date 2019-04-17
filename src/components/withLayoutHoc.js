@@ -15,8 +15,9 @@ const hoc = (
 	setLayoutPropName: string = "updateLayoutValue",
 	initialLayoutValue: {} = initialValue
 ) => {
+	//$FlowFixMe
 	return compose(
-		withState(layoutPropsName, setLayoutPropName, initialLayoutValue),
+		withState<*, *, *>(layoutPropsName, setLayoutPropName, initialLayoutValue),
 		mapProps(({[setLayoutPropName]: func, ...rest}) => ({
 			...rest,
 			onLayout: ({nativeEvent: {layout}}) => func(layout)

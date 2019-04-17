@@ -20,4 +20,4 @@ const GameItem = ({item, getItemSize}) => {
 	);
 };
 
-module.exports = onlyUpdateForKeys(["item"])(GameItem);
+module.exports = onlyUpdateForKeys<*>(["item"])(GameItem);

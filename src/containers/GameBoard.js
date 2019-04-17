@@ -70,11 +70,6 @@ class GameBoard<ItemT> extends React.Component<Props<ItemT>, State<ItemT>> {
 		};
 	}
 
-	static defaultProps = {
-		fallingDuration: 3000,
-		addNewInterval: 2000
-	};
-
 	componentWillUpdate() {
 		consoleTime("GameBoard:update");
 	}
@@ -219,4 +214,4 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default onlyUpdateForKeys([])(GameBoard);
+export default onlyUpdateForKeys<Props<any>>([])(GameBoard);

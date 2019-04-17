@@ -73,6 +73,6 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default onlyUpdateForKeys(["rightProperty", "leftProperty"])(
+export default onlyUpdateForKeys<Props>(["rightProperty", "leftProperty"])(
 	GameBottomBar
 );
