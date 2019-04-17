@@ -133,6 +133,23 @@ const Info = ({scrollViewRef}) => {
 						</View>
 					);
 				})}
+				<Text
+					style={{
+						fontSize: 20,
+						marginTop: 16,
+						marginBottom: 8
+					}}
+				>
+					audio sources
+				</Text>
+				<Text
+					style={{
+						marginTop: 16,
+						marginBottom: 8
+					}}
+				>
+					"Cat, Screaming, A.wav" by InspectorJ (www.jshaw.co.uk) of Freesound.org
+				</Text>
 			</View>
 		</ScrollView>
 	);

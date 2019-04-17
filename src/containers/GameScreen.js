@@ -27,6 +27,7 @@ const getItemSize = makePhotoSourceSize(itemHeight);
 
 import {consoleTime, consoleTimeEnd} from "../utils/debugUtils";
 import AppearOnMount from "../components/AppearOnMount";
+import {playFailureCat} from "../utils/music"
 
 type State<T> = {
 	rightAnswers: Array<T>,
@@ -100,6 +101,7 @@ class GameScreen extends React.Component<$FlowFixMeProps, State<*>> {
 	}
 
 	vibrateOnWrongAnswer = () => {
+		playFailureCat()
 		Vibration.vibrate(200);
 	};
 
