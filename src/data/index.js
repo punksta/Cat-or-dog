@@ -4,12 +4,13 @@ import type {ResolvedAssetSource} from "AssetSourceResolver";
 import resolveAssetSource from "react-native/Libraries/Image/resolveAssetSource";
 import {getUniqueFromArrays, getRatioOfImage} from "./utils";
 
-export type PhotoSource = {
+export type PhotoSource = $ReadOnly<{|
 	resource: any,
 	source: string,
 	tags: Array<string>,
-	ratio: number
-};
+	ratio: number,
+	action?: string
+|}>;
 
 export const photoSources: Array<PhotoSource> = [
 	{
@@ -123,6 +124,12 @@ export const photoSources: Array<PhotoSource> = [
 		resource: require("../img/dressed_cat_3.jpg"),
 		source: "https://www.flickr.com/photos/94515279@N00/1505091017",
 		tags: ["dressed cat", "cat"]
+	},
+	{
+		resource: require("../img/dog_toilet.png"),
+		source: "",
+		tags: [],
+		action: "death_on_touch"
 	}
 ].map(item => ({
 	...item,
@@ -152,5 +159,8 @@ const getAvailableProperties_ = (property: string): Array<string> => {
 	);
 	return getUniqueProperties().filter(p => !relatedProperties.includes(p));
 };
+
+export const getActionItems = (): Array<PhotoSource> =>
+	photoSources.filter(a => typeof a.action === "string");
 
 export const getAvailableProperties = memoize(getAvailableProperties_);

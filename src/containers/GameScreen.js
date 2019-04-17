@@ -14,7 +14,7 @@ import {
 } from "react-native";
 import {connect} from "react-redux";
 import GameScore from "../components/GameScore";
-import {getPhotosOfProperties} from "../data";
+import {getPhotosOfProperties, getActionItems} from "../data";
 import GameBottomBar from "../components/GameBottomBar";
 import GameItem from "../components/GameItem";
 import type {GameSettings} from "../containers/GameBoard";
@@ -103,7 +103,22 @@ class GameScreen extends React.Component<$FlowFixMeProps, State<*>> {
 		Vibration.vibrate(200);
 	};
 
+	onActionPerfromed = item => {
+		switch (item.action) {
+			case "death_on_touch": {
+				setTimeout(this.vibrateOnWrongAnswer, 0);
+				return this.updateState(item, false);
+			}
+			default: {
+			}
+		}
+	};
+
 	onFallDown = (item, index, {x, y}, {width, height}) => {
+		if (item.action) {
+			return;
+		}
+
 		const {leftProperty, rightProperty} = this.props.gameSettings;
 
 		const layout = getItemSize(item);
@@ -113,6 +128,10 @@ class GameScreen extends React.Component<$FlowFixMeProps, State<*>> {
 		if (!isRightAnswer) {
 			setTimeout(this.vibrateOnWrongAnswer, 0);
 		}
+		this.updateState(item, isRightAnswer);
+	};
+
+	updateState = (item, isRightAnswer) => {
 		this.setState(({rightAnswers, wrongAnswers, wrongAnswersLimit}) => {
 			const isGameEnded =
 				wrongAnswers.length + (isRightAnswer ? 0 : 1) >= wrongAnswersLimit;
@@ -156,7 +175,7 @@ class GameScreen extends React.Component<$FlowFixMeProps, State<*>> {
 		} = props.gameSettings;
 
 		return {
-			uniqueItems: getPhotosOfProperties(leftProperty, rightProperty),
+			uniqueItems: [...getPhotosOfProperties(leftProperty, rightProperty), ...getActionItems()],
 			spinAnimation: true,
 			newItemProvider:
 				typeof newItemProvider === "function"
@@ -186,6 +205,7 @@ class GameScreen extends React.Component<$FlowFixMeProps, State<*>> {
 				</View>
 				{!this.state.isGameEnded && (
 					<GameBoard
+						onActionPerfromed={this.onActionPerfromed}
 						style={styles.container}
 						getItemLayout={getItemSize}
 						renderItem={(item, index) => (

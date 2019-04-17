@@ -4,6 +4,7 @@ import * as React from "react";
 import {View, StyleSheet} from "react-native";
 import type {ViewProps} from "react-native/Libraries/Components/View/ViewPropTypes";
 import DraddingFalling from "./DraddingFallingV2";
+import TouchableFalling from "./TouchableFalling";
 import type {
 	LayoutEvent,
 	Layout
@@ -168,6 +169,63 @@ class GameBoard<ItemT> extends React.Component<Props<ItemT>, State<ItemT>> {
 		};
 	};
 
+	onActionPerfromed = (item: GameItem<ItemT>) => {
+		return (coords: {x: number, y: number}) => {
+			this.props.onActionPerfromed(
+				item.item,
+				item.index,
+				coords,
+				this.state.layout
+			);
+
+			this.setState(state => {
+				return {
+					renderingItems: state.renderingItems.filter(r => r !== item)
+				};
+			});
+		};
+	};
+
+	renderGameItem = (item: GameItem<ItemT>) => {
+		const onFallDown = this.onFallDown(item);
+
+		switch (item.item.action) {
+			case "death_on_touch": {
+				return (
+					<TouchableFalling
+						fallToY={item.fallToY}
+						fallingDuration={this.props.gameSettings.fallingIntervalProvider(
+							this.state.totalItemsInGame
+						)}
+						onActionPerformed={this.onActionPerfromed(item)}
+						key={item.key}
+						startPosition={item.startPosition}
+						style={styles.item}
+						onFallDown={onFallDown}
+					>
+						{this.props.renderItem(item.item, item.index)}
+					</TouchableFalling>
+				);
+			}
+			default: {
+				return (
+					<DraddingFalling
+						fallToY={item.fallToY}
+						fallingDuration={this.props.gameSettings.fallingIntervalProvider(
+							this.state.totalItemsInGame
+						)}
+						key={item.key}
+						startPosition={item.startPosition}
+						style={styles.item}
+						onFallDown={onFallDown}
+					>
+						{this.props.renderItem(item.item, item.index)}
+					</DraddingFalling>
+				);
+			}
+		}
+	};
+
 	render() {
 		const {
 			getItemLayout,
@@ -180,24 +238,7 @@ class GameBoard<ItemT> extends React.Component<Props<ItemT>, State<ItemT>> {
 		return (
 			<View {...rest} onLayout={this.onLayout}>
 				{this.state.renderingItems.map((item: GameItem<ItemT>) => {
-					// https://github.com/facebook/flow/issues/6570
-					// $FlowFixMe
-					const onFallDown = this.onFallDown(item);
-
-					return (
-						<DraddingFalling
-							fallToY={item.fallToY}
-							fallingDuration={this.props.gameSettings.fallingIntervalProvider(
-								this.state.totalItemsInGame
-							)}
-							key={item.key}
-							startPosition={item.startPosition}
-							style={styles.item}
-							onFallDown={onFallDown}
-						>
-							{this.props.renderItem(item.item, item.index)}
-						</DraddingFalling>
-					);
+					return this.renderGameItem(item);
 				})}
 			</View>
 		);
