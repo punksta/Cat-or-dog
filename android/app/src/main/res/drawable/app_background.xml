@@ -5,7 +5,11 @@
 
     <item android:drawable="@android:color/background_light" />
 
-    <item>
+    <item
+        android:gravity="center"
+        android:width="150dp"
+        android:height="150dp"
+        >
 
         <bitmap
             android:gravity="center"
