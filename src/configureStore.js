@@ -22,18 +22,16 @@ export default navigationService => {
 		version: 1
 	};
 
-	const appReducer = persistCombineReducers(persistConfig, {
+	const persistedReducer = persistCombineReducers(persistConfig, {
 		gameHistory,
 		levels
 	});
-
-	const persistedReducer = appReducer;
 
 	const dependencies = {
 		navigationService
 	};
 
-	const epicMiddleware = createEpicMiddleware(rootEpic, {dependencies});
+	const epicMiddleware = createEpicMiddleware({dependencies});
 	const middlewares = [epicMiddleware];
 	if (isDebug()) {
 		middlewares.push(require("redux-logger").default);
@@ -41,6 +39,7 @@ export default navigationService => {
 
 	const store = createStore(persistedReducer, applyMiddleware(...middlewares));
 
+	epicMiddleware.run(rootEpic);
 	const persistor = persistStore(store);
 
 	return {

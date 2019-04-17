@@ -1,31 +1,32 @@
-import "rxjs/add/operator/map";
-import "rxjs/add/operator/filter";
-import "rxjs/add/operator/debounceTime";
-import "rxjs/add/operator/do";
-import "rxjs/add/operator/throttleTime";
-import "rxjs/add/operator/mergeMap";
-import "rxjs/add/operator/observeOn";
-
-import {Observable} from "rxjs/Observable";
-import {async as asyncScheduler} from "rxjs/scheduler/async";
-
-import "rxjs/add/observable/empty";
+import {Observable} from "rxjs";
+import {asyncScheduler} from "rxjs";
+import {
+	map,
+	filter,
+	tap,
+	throttleTime,
+	mergeMap,
+	observeOn
+} from "rxjs/operators";
+import {EMPTY} from "rxjs";
 
 import {NavigationActions} from "react-navigation";
 
-export const navigation = (action$, {getState}, {navigationService}) => {
-	return action$
-		.ofType(
-			"CONFIGURE_GAME_BUTTON_CLICK",
-			"NEW_GAME_BUTTON_CLICK",
-			"EXIT_FROM_GAME_CLICK",
-			"RATINGS_BUTTON_CLICK",
-			"PLAY_GAME_CLICK",
-			"LEVEL_PRESSED"
-		)
-		.observeOn(asyncScheduler)
-		.throttleTime(500)
-		.map(a => {
+export const navigation = (action$, state$, {navigationService}) => {
+	return action$.pipe(
+		filter(a =>
+			[
+				"CONFIGURE_GAME_BUTTON_CLICK",
+				"NEW_GAME_BUTTON_CLICK",
+				"EXIT_FROM_GAME_CLICK",
+				"RATINGS_BUTTON_CLICK",
+				"PLAY_GAME_CLICK",
+				"LEVEL_PRESSED"
+			].includes(a.type)
+		),
+		observeOn(asyncScheduler),
+		throttleTime(500),
+		map(a => {
 			switch (a.type) {
 				case "PLAY_GAME_CLICK":
 					return NavigationActions.navigate({
@@ -73,8 +74,9 @@ export const navigation = (action$, {getState}, {navigationService}) => {
 				default:
 					return undefined;
 			}
-		})
-		.filter(a => a !== undefined)
-		.do(a => navigationService.dispatch(a))
-		.mergeMap(_ => Observable.empty());
+		}),
+		filter(a => a !== undefined),
+		tap(a => navigationService.dispatch(a)),
+		mergeMap(_ => EMPTY)
+	);
 };

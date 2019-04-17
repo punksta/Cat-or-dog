@@ -25,13 +25,14 @@
     "react-native-popup-dialog": "^0.15.0",
     "react-native-reanimated": "^1.0.0-alpha.10",
     "react-navigation": "^2.6.0",
+    "react-navigation": "^2.14.0",
     "react-redux": "^5.0.7",
     "recompose": "^0.27.1",
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
-    "redux-observable": "^0.18.0",
+    "redux-observable": "^1.0.0",
     "redux-persist": "^5.10.0",
-    "rxjs": "^5.5.11"
+    "rxjs": "^6.3.2"
   },
   "devDependencies": {
     "app-icon": "^0.6.3",
@@ -41,9 +42,12 @@
     "flow-bin": "^0.75.0",
     "jest": "23.0.1",
     "prettier": "^1.13.7",
-    "react-test-renderer": "16.6.3"
+    "react-test-renderer": "16.5.0"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "transform": {
+      "^.+\\.(js)$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
+    }
   }
 }

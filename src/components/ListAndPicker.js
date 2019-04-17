@@ -1,22 +1,27 @@
 //@flow
-import React from "react";
+import * as React from "react";
 import type {ViewLayout} from "ViewPropTypes";
 import {Picker, View, FlatList, StyleSheet, Image} from "react-native";
 import PreviewItem from "./PreviewItem";
 import type {PhotoSource} from "../data";
 import StateFullPicker from "./StateFullPicker";
 
-type Props = {
+type OutProps = {
 	photos: Array<PhotoSource>,
 	availablePropepries: Array<string>,
 	selectedProperty: ?string,
-	onValueChange: (itemValue: string, itemIndex: number) => void
+	onValueChange: (itemValue: string, itemIndex: number) => void,
+	ListFooterComponent?: ?(React.ComponentType<any> | React.Element<any>),
+	pickerBackgroundColor: string,
+	flatListRef: {current: FlatList<any> | null}
+};
+
+type Props = OutProps & {
+	width: number,
+	onLayout: ?(event: LayoutEvent) => void
 };
 
 const keyExtractor = item => `${item.resource}`;
-
-const capitalize = (str: string): string =>
-	str.length > 0 ? str[0].toUpperCase() + str.substring(1) : str;
 
 const ListAndPicker = ({
 	photos,
@@ -28,7 +33,7 @@ const ListAndPicker = ({
 	ListFooterComponent,
 	pickerBackgroundColor,
 	flatListRef
-}) => {
+}: Props) => {
 	return (
 		<View onLayout={onLayout} style={styles.root}>
 			<StateFullPicker
@@ -39,7 +44,7 @@ const ListAndPicker = ({
 				menuStyle={{backgroundColor: pickerBackgroundColor}}
 				values={availablePropepries}
 				selectedValue={selectedProperty}
-				onSelectItem={(item, index) => onValueChange(item)}
+				onSelectItem={(item, index) => onValueChange(item, index)}
 			/>
 			{width > 0 && (
 				<FlatList
@@ -51,7 +56,7 @@ const ListAndPicker = ({
 						<PreviewItem
 							item={item}
 							style={{
-								borderRadius: Math.min(width, width / item.ratio),
+								borderRadius: Math.min(width, width / item.ratio) / 2,
 								padding: 50,
 								marginBottom: 8,
 								marginTop: 8,
@@ -79,10 +84,11 @@ const styles = StyleSheet.create({
 
 import {mapProps, compose, withProps, withState} from "recompose";
 import withLayoutHoc from "./withLayoutHoc";
+import type {LayoutEvent} from "react-native/Libraries/Types/CoreEventTypes";
 
 const hoc = compose(
 	withLayoutHoc(),
 	mapProps(({layout: {width}, ...rest}) => ({width, ...rest}))
 );
 
-export default hoc(ListAndPicker);
+export default (hoc(ListAndPicker): React.ComponentType<OutProps>);

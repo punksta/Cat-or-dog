@@ -1,14 +1,20 @@
+// @flow
+
 import * as React from "react";
 import {StyleSheet, Image, Text, View} from "react-native";
 import TouchableBounce from "react-native/Libraries/Components/Touchable/TouchableBounce.js";
 
-import type {UserDegree} from "../data/userDegree";
+import type {UserDegree as UserDegreeType} from "../data/userDegree";
 import LinearGradient from "react-native-linear-gradient";
+
+import type {ViewStyleProp} from "react-native/Libraries/StyleSheet/StyleSheet";
 
 type Props = {
 	bestScore: number,
-	currentUserDegree: UserDegree,
-	nextUserDegree?: UserDegree
+	currentUserDegree: UserDegreeType,
+	nextUserDegree?: UserDegreeType,
+	onPress: () => void,
+	style?: ViewStyleProp
 };
 
 const UserDegreeComponent = ({
@@ -17,7 +23,7 @@ const UserDegreeComponent = ({
 	nextUserDegree,
 	style,
 	onPress
-}) => {
+}: Props) => {
 	return (
 		<TouchableBounce onPress={onPress}>
 			<LinearGradient
@@ -27,6 +33,7 @@ const UserDegreeComponent = ({
 				colors={["#d66a41", "#f2b448"]}
 				style={[
 					{
+						overflow: "hidden",
 						backgroundColor: "white",
 						borderRadius: 50,
 						paddingHorizontal: 25,

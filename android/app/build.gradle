@@ -73,7 +73,8 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-    entryFile: "index.js"
+    entryFile: "index.js",
+    bundleCommand: "ram-bundle",
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -101,8 +102,8 @@ android {
         applicationId "com.punksta.apps.sortgame"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 4
-        versionName "1.0.3"
+        versionCode 5
+        versionName "1.0.4"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -117,9 +118,8 @@ android {
     }
 
       signingConfigs {
-
                debug {
-                     storeFile new File("/home/stanislav/.android/debug.keystore")
+                     storeFile new File(System.getProperty("user.home"), ".android/debug.keystore")
                      storePassword "android"
                      keyAlias "AndroidDebugKey"
                      keyPassword "android"

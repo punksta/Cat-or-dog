@@ -1,0 +1,38 @@
+stages:
+- test
+- build
+
+test:flow:
+  image: node:8.12.0
+  stage: test
+  variables: {}
+
+  script:
+  - npm ci
+  - npm run flow
+
+build:android:
+  image: punksta/gitlab-ci-android-rn
+  stage: build
+  variables: {}
+
+  before_script:
+  - export GRADLE_USER_HOME=${CI_PROJECT_DIR}/.gradle
+   # https://stackoverflow.com/questions/22475849/node-js-error-enospc/32600959#32600959
+  - echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf && sysctl -p
+
+  script:
+  - npm ci
+  - cd ${CI_PROJECT_DIR}/android
+  - ./gradlew --no-daemon app:assembleRelease
+
+  artifacts:
+    paths:
+    - ${CI_PROJECT_DIR}/android/app/build/outputs/apk/release/app-release.apk
+
+  cache:
+    key: ${CI_PROJECT_ID}-android-gradle
+    paths:
+    - ${CI_PROJECT_DIR}/.gradle/caches/
+    - ${CI_PROJECT_DIR}/.gradle/wrapper/
+

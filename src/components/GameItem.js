@@ -12,7 +12,7 @@ const GameItem = ({item, getItemSize}) => {
 			resizeMode={"contain"}
 			source={item.resource}
 			style={{
-				borderRadius: height,
+				borderRadius: height / 2,
 				width,
 				height
 			}}
