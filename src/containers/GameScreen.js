@@ -27,7 +27,7 @@ const getItemSize = makePhotoSourceSize(itemHeight);
 
 import {consoleTime, consoleTimeEnd} from "../utils/debugUtils";
 import AppearOnMount from "../components/AppearOnMount";
-import {playFailureCat} from "../utils/music"
+import {playFailureCat, playFailureDog} from "../utils/music";
 
 type State<T> = {
 	rightAnswers: Array<T>,
@@ -100,15 +100,20 @@ class GameScreen extends React.Component<$FlowFixMeProps, State<*>> {
 		consoleTime("GameScreen:update");
 	}
 
-	vibrateOnWrongAnswer = () => {
-		playFailureCat()
+	notifyFailureSound = item => {
+		const isCat = item.tags.includes("cat");
+		if (isCat) {
+			playFailureCat();
+		} else {
+			playFailureDog();
+		}
 		Vibration.vibrate(200);
 	};
 
 	onActionPerfromed = item => {
 		switch (item.action) {
 			case "death_on_touch": {
-				setTimeout(this.vibrateOnWrongAnswer, 0);
+				setTimeout(this.notifyFailureSound.bind(null, item), 0);
 				return this.updateState(item, false);
 			}
 			default: {
@@ -128,7 +133,7 @@ class GameScreen extends React.Component<$FlowFixMeProps, State<*>> {
 
 		const isRightAnswer = isFirstPartArea === item.tags.includes(leftProperty);
 		if (!isRightAnswer) {
-			setTimeout(this.vibrateOnWrongAnswer, 0);
+			this.notifyFailureSound(item);
 		}
 		this.updateState(item, isRightAnswer);
 	};
@@ -177,7 +182,10 @@ class GameScreen extends React.Component<$FlowFixMeProps, State<*>> {
 		} = props.gameSettings;
 
 		return {
-			uniqueItems: [...getPhotosOfProperties(leftProperty, rightProperty), ...getActionItems()],
+			uniqueItems: [
+				...getPhotosOfProperties(leftProperty, rightProperty),
+				...getActionItems()
+			],
 			spinAnimation: true,
 			newItemProvider:
 				typeof newItemProvider === "function"
