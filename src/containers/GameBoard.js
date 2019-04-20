@@ -160,14 +160,18 @@ class GameBoard<ItemT> extends React.Component<Props<ItemT>, State<ItemT>> {
 			this.props.onFallDown &&
 				this.props.onFallDown(item.item, item.index, coords, this.state.layout);
 
-			this.setState(state => {
-				const items = state.renderingItems.filter(r => r !== item);
-				return {
-					renderingItems: items
-				};
-			});
+			this.removeItemsFromList(item);
 		};
 	};
+
+	removeItemsFromList = (item: GameItem<ItemT>) => {
+
+		this.setState(state => {
+			return {
+				renderingItems: state.renderingItems.filter(r => r !== item)
+			};
+		});
+	}
 
 	onActionPerfromed = (item: GameItem<ItemT>) => {
 		return (coords: {x: number, y: number}) => {
@@ -177,12 +181,6 @@ class GameBoard<ItemT> extends React.Component<Props<ItemT>, State<ItemT>> {
 				coords,
 				this.state.layout
 			);
-
-			this.setState(state => {
-				return {
-					renderingItems: state.renderingItems.filter(r => r !== item)
-				};
-			});
 		};
 	};
 
@@ -202,6 +200,7 @@ class GameBoard<ItemT> extends React.Component<Props<ItemT>, State<ItemT>> {
 						startPosition={item.startPosition}
 						style={styles.item}
 						onFallDown={onFallDown}
+						onAnimdationEnded={this.removeItemsFromList.bind(null, item)}
 					>
 						{this.props.renderItem(item.item, item.index)}
 					</TouchableFalling>

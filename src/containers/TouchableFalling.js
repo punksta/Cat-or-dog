@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Animated, Dimensions} from "react-native";
+import {Animated, Easing, Dimensions} from "react-native";
 import AnimatedValueXY from "react-native/Libraries/Animated/src/nodes/AnimatedValueXY";
 
 import {onlyUpdateForKeys} from "recompose";
@@ -9,7 +9,7 @@ import {consoleTime, consoleTimeEnd} from "../utils/debugUtils";
 import {PanGestureHandler, State} from "react-native-gesture-handler";
 
 class TouchableFalling extends React.Component {
-	scaleAnimatedValue = new Animated.Value(1);
+	dissapearAnimation = new Animated.Value(0);
 	spinAnimatedValue = new Animated.Value(0);
 	fallingAnimation: ?CompositeAnimation;
 
@@ -43,6 +43,16 @@ class TouchableFalling extends React.Component {
 			this.props?.onFallDown(lastFallingCoords);
 		}
 	};
+
+	playDissapearAnimation = (onEnd) => {
+		Animated.timing(this.dissapearAnimation, {
+			toValue: 1,
+			duration: 400,
+			easing: Easing.bezier(.17,.67,.89,.65),
+			useNativeDriver: true,
+			onComplete: ({finished}) => finished && this.props.onAnimdationEnded()
+		}).start()
+	}
 
 	startFallingAnimation = (delaySpin = 0) => {
 		const currentY = Math.abs(
@@ -78,9 +88,17 @@ class TouchableFalling extends React.Component {
 		a.start();
 	};
 
+	touched = false;
+
 	onHandlerStateChange = event => {
+		if (this.touched) {
+			return;
+		}
 		if (event.nativeEvent.state === State.BEGAN) {
+			this.touched= true;
 			this.props.onActionPerformed();
+			this.fallingAnimation?.stop();
+			this.playDissapearAnimation();
 		}
 	};
 
@@ -92,13 +110,24 @@ class TouchableFalling extends React.Component {
 			outputRange: ["0deg", "360deg", "720deg"]
 		});
 
+		const dissapearApha = this.dissapearAnimation.interpolate(({
+			inputRange: [0, 0.7, 1],
+			outputRange: [1, 1, 0]
+		}))
+
+		const dissapearScale =  this.dissapearAnimation.interpolate(({
+			inputRange: [0, 1],
+			outputRange: [1, 1.2]
+		}))
+
 		const panStyle = {
+			opacity: dissapearApha,
 			top: this.props.startPosition.top,
 			left: this.props.startPosition.left,
 			transform: [
 				{translateY: this.fallingDownValue},
-				{scaleY: this.scaleAnimatedValue},
-				{scaleX: this.scaleAnimatedValue},
+				{scaleY: dissapearScale},
+				{scaleX: dissapearScale},
 				{rotate: spin}
 			]
 		};
@@ -114,7 +143,7 @@ class TouchableFalling extends React.Component {
 
 	componentWillUnmount() {
 		this.fallingAnimation?.stop();
-		this.scaleAnimatedValue.removeAllListeners();
+		this.dissapearAnimation.removeAllListeners();
 		this.spinAnimatedValue.removeAllListeners();
 		this.fallingDownValue.removeAllListeners();
 	}
