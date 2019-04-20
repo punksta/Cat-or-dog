@@ -43,6 +43,8 @@ type Props<ItemT> = $ReadOnly<{|
 
 	getItemLayout: (ItemT, number) => {width: number, height: number},
 
+	onActionPerfromed: (ItemT) => void,
+
 	onFallDown: (
 		item: ItemT,
 		index: number,
@@ -160,33 +162,30 @@ class GameBoard<ItemT> extends React.Component<Props<ItemT>, State<ItemT>> {
 			this.props.onFallDown &&
 				this.props.onFallDown(item.item, item.index, coords, this.state.layout);
 
+			//$FlowFixMe
 			this.removeItemsFromList(item);
 		};
 	};
 
 	removeItemsFromList = (item: GameItem<ItemT>) => {
-
 		this.setState(state => {
 			return {
 				renderingItems: state.renderingItems.filter(r => r !== item)
 			};
 		});
-	}
+	};
 
 	onActionPerfromed = (item: GameItem<ItemT>) => {
 		return (coords: {x: number, y: number}) => {
-			this.props.onActionPerfromed(
-				item.item,
-				item.index,
-				coords,
-				this.state.layout
-			);
+			this.props.onActionPerfromed(item.item);
 		};
 	};
 
 	renderGameItem = (item: GameItem<ItemT>) => {
+		//$FlowFixMe
 		const onFallDown = this.onFallDown(item);
 
+		//$FlowFixMe
 		switch (item.item.action) {
 			case "death_on_touch": {
 				return (
@@ -195,11 +194,13 @@ class GameBoard<ItemT> extends React.Component<Props<ItemT>, State<ItemT>> {
 						fallingDuration={this.props.gameSettings.fallingIntervalProvider(
 							this.state.totalItemsInGame
 						)}
+						//$FlowFixMe
 						onActionPerformed={this.onActionPerfromed(item)}
 						key={item.key}
 						startPosition={item.startPosition}
 						style={styles.item}
 						onFallDown={onFallDown}
+						//$FlowFixMe
 						onAnimdationEnded={this.removeItemsFromList.bind(null, item)}
 					>
 						{this.props.renderItem(item.item, item.index)}
@@ -231,12 +232,14 @@ class GameBoard<ItemT> extends React.Component<Props<ItemT>, State<ItemT>> {
 			onFallDown,
 			renderItem,
 			gameSettings,
+			onActionPerfromed,
 			...rest
 		} = this.props;
 
 		return (
 			<View {...rest} onLayout={this.onLayout}>
 				{this.state.renderingItems.map((item: GameItem<ItemT>) => {
+					//$FlowFixMe
 					return this.renderGameItem(item);
 				})}
 			</View>
