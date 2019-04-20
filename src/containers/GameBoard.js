@@ -43,7 +43,7 @@ type Props<ItemT> = $ReadOnly<{|
 
 	getItemLayout: (ItemT, number) => {width: number, height: number},
 
-	onActionPerfromed: (ItemT) => void,
+	onActionPerfromed: ItemT => void,
 
 	onFallDown: (
 		item: ItemT,
@@ -131,14 +131,29 @@ class GameBoard<ItemT> extends React.Component<Props<ItemT>, State<ItemT>> {
 		};
 	};
 
+	static shouldUseActionType = () => {
+		return getRandomIndex(10) == 0;
+	};
+
 	static makeNewGameItem = <ItemT>(
 		layout: Layout,
 		props: Props<ItemT>,
 		caclulatePostion = GameBoard.calculateRandomPostion
 	): GameItem<ItemT> => {
-		const index: number = getRandomIndex(props.gameSettings.uniqueItems.length);
+		let index;
+		let item;
 
-		const item = props.gameSettings.uniqueItems[index];
+		if (GameBoard.shouldUseActionType()) {
+			const actionItems = props.gameSettings.uniqueItems
+				.map((item, index) => [item, index])
+				.filter(([item]) => item.action);
+
+			[item, index] = actionItems[getRandomIndex(actionItems.length)];
+		} else {
+			index = getRandomIndex(props.gameSettings.uniqueItems.length);
+
+			item = props.gameSettings.uniqueItems[index];
+		}
 
 		const {height} = props.getItemLayout(item, index);
 
