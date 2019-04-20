@@ -9,10 +9,18 @@ const FailureDog = new Sound('angry_dog.was', Sound.MAIN_BUNDLE, (error) => {
 });
 
 export const playFailureCat = () => {
-	FailureCat.play();
+	if (FailureCat.isPlaying) {
+		FailureCat.stop(() => FailureCat.play());
+	} else {
+		FailureCat.play();
+	}
 }
 
 
 export const playFailureDog = () => {
-	FailureDog.play();
+	if (FailureDog.isPlaying) {
+		FailureDog.stop(() => FailureDog.play());
+	} else {
+		FailureDog.play();
+	}
 }
