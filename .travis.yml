@@ -39,6 +39,5 @@ matrix:
         - cd android
         - ./gradlew clean
       script:
-        - cd android
         - ./gradlew assembleRelease
 
