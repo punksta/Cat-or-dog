@@ -146,7 +146,8 @@ class GameBoard<ItemT> extends React.Component<Props<ItemT>, State<ItemT>> {
 		if (GameBoard.shouldUseActionType()) {
 			const actionItems = props.gameSettings.uniqueItems
 				.map((item, index) => [item, index])
-				.filter(([item]) => item.action);
+				// $FlowFixMe
+				.filter(([item]) => item['action']);
 
 			[item, index] = actionItems[getRandomIndex(actionItems.length)];
 		} else {
