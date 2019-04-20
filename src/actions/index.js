@@ -27,4 +27,10 @@ export type Actions =
 			wrongItems: Array<any>,
 			rightItems: Array<any>,
 			levelNumber: number
+	  }
+	| {
+			type: "ENABLE_MUSIC"
+	  }
+	| {
+			type: "DISABLE_MUSIC"
 	  };

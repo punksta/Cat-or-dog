@@ -7,6 +7,7 @@ import {
 import storage from "redux-persist/lib/storage";
 import gameHistory from "./reducers/gameHistory";
 import levels from "./reducers/levels";
+import settings from "./reducers/settings";
 
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import AppNavigator from "./navigation/AppNavigator";
@@ -18,13 +19,14 @@ export default navigationService => {
 	const persistConfig = {
 		key: "rootReducer",
 		storage,
-		whitelist: ["gameHistory", "levels"],
+		whitelist: ["gameHistory", "levels", "settings"],
 		version: 1
 	};
 
 	const persistedReducer = persistCombineReducers(persistConfig, {
 		gameHistory,
-		levels
+		levels,
+		settings
 	});
 
 	const dependencies = {

@@ -26,7 +26,8 @@ const OptimizedGameScore = onlyUpdateForKeys(["rightAnswerCount", "lifeCount"])(
 const styles = StyleSheet.create({
 	rightText: {
 		position: "absolute",
-		end: 0,
+		end: 8,
+		top: 8,
 		height: 40,
 		width: 40,
 		textAlignVertical: "center",

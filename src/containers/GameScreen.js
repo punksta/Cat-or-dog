@@ -101,6 +101,9 @@ class GameScreen extends React.Component<$FlowFixMeProps, State<*>> {
 	}
 
 	notifyFailureSound = item => {
+		if (!this.props.isMusicEnabled) {
+			return;
+		}
 		const isCat = item.tags.includes("cat");
 		if (isCat) {
 			playFailureCat();
@@ -288,11 +291,7 @@ const Connected = connect(
 	(state, ownProps) => {
 		const {gameSettings, level, levelIndex} =
 			ownProps.navigation?.state?.params || {};
-		return {
-			gameSettings,
-			level,
-			levelIndex
-		};
+		return {gameSettings, level, levelIndex, isMusicEnabled: state.settings.isMusicEnabled};
 	},
 	mapDispatchToProps
 )(GameScreen);
