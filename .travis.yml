@@ -9,6 +9,14 @@ matrix:
     - stage: build_android
       language: android
       jdk: openjdk8
+      before_cache:
+        - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+        - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+      cache:
+        directories:
+          - $HOME/.gradle/caches/
+          - $HOME/.gradle/wrapper/
+          - $HOME/.android/build-cache
       android:
         components:
           - platform-tools
@@ -25,7 +33,11 @@ matrix:
         - nvm install 11
         - node --version
         - chmod +x ./android/gradlew
-      install: npm ci
+
+      install:
+        - npm ci
+        - cd android
+        - ./gradlew clean
       script:
         - cd android
         - ./gradlew assembleRelease
