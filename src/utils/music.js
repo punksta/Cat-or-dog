@@ -1,12 +1,8 @@
-const Sound = require('react-native-sound');
+const Sound = require("react-native-sound");
 
-const FailureCat = new Sound('angry_cat.mp3', Sound.MAIN_BUNDLE, (error) => {
+const FailureCat = new Sound("angry_cat.mp3", Sound.MAIN_BUNDLE, error => {});
 
-});
-
-const FailureDog = new Sound('angry_dog.was', Sound.MAIN_BUNDLE, (error) => {
-
-});
+const FailureDog = new Sound("angry_dog.was", Sound.MAIN_BUNDLE, error => {});
 
 export const playFailureCat = () => {
 	if (FailureCat.isPlaying) {
@@ -14,8 +10,7 @@ export const playFailureCat = () => {
 	} else {
 		FailureCat.play();
 	}
-}
-
+};
 
 export const playFailureDog = () => {
 	if (FailureDog.isPlaying) {
@@ -23,4 +18,4 @@ export const playFailureDog = () => {
 	} else {
 		FailureDog.play();
 	}
-}
+};

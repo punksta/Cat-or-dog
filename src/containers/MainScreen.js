@@ -6,7 +6,7 @@ import HomeScreenBackground from "../components/HomeScreenBackground";
 import Info from "../components/Info";
 import AppearOnMount from "../components/AppearOnMount";
 import ConnectedUserDegree from "../components/ConnectedUserDegree";
-import MusicController from "./MusicController"
+import MusicController from "./MusicController";
 
 import PopupDialog, {SlideAnimation} from "react-native-popup-dialog";
 
@@ -63,7 +63,6 @@ const MainScreen = ({
 						newGameClick={newGameClick}
 					/>
 					<MusicController />
-
 				</View>
 			</AppearOnMount>
 

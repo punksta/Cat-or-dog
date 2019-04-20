@@ -44,15 +44,15 @@ class TouchableFalling extends React.Component {
 		}
 	};
 
-	playDissapearAnimation = (onEnd) => {
+	playDissapearAnimation = onEnd => {
 		Animated.timing(this.dissapearAnimation, {
 			toValue: 1,
 			duration: 400,
-			easing: Easing.bezier(.17,.67,.89,.65),
+			easing: Easing.bezier(0.17, 0.67, 0.89, 0.65),
 			useNativeDriver: true,
 			onComplete: ({finished}) => finished && this.props.onAnimdationEnded()
-		}).start()
-	}
+		}).start();
+	};
 
 	startFallingAnimation = (delaySpin = 0) => {
 		const currentY = Math.abs(
@@ -95,7 +95,7 @@ class TouchableFalling extends React.Component {
 			return;
 		}
 		if (event.nativeEvent.state === State.BEGAN) {
-			this.touched= true;
+			this.touched = true;
 			this.props.onActionPerformed();
 			this.fallingAnimation?.stop();
 			this.playDissapearAnimation();
@@ -110,15 +110,15 @@ class TouchableFalling extends React.Component {
 			outputRange: ["0deg", "360deg", "720deg"]
 		});
 
-		const dissapearApha = this.dissapearAnimation.interpolate(({
+		const dissapearApha = this.dissapearAnimation.interpolate({
 			inputRange: [0, 0.7, 1],
 			outputRange: [1, 1, 0]
-		}))
+		});
 
-		const dissapearScale =  this.dissapearAnimation.interpolate(({
+		const dissapearScale = this.dissapearAnimation.interpolate({
 			inputRange: [0, 1],
 			outputRange: [1, 1.2]
-		}))
+		});
 
 		const panStyle = {
 			opacity: dissapearApha,

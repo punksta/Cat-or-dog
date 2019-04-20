@@ -68,11 +68,11 @@ export default class Root extends React.Component {
 	};
 
 	componentDidMount() {
-        initStore();
-        initNavigator();
-        this.setState({
-            loaded: true
-        });
+		initStore();
+		initNavigator();
+		this.setState({
+			loaded: true
+		});
 	}
 	render() {
 		return (
