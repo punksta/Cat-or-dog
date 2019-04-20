@@ -8,7 +8,7 @@ const GameScore = ({rightAnswerCount, lifeCount}) => {
 	return (
 		<View style={styles.root}>
 			<View style={styles.heartWrapper}>
-				<Heart />
+				<Heart color={"red"} cornerColor={"black"}/>
 
 				<View style={styles.leftTextWrapper}>
 					<Text style={styles.leftText}>{lifeCount}</Text>

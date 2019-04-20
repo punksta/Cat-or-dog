@@ -70,7 +70,7 @@ const Info = ({scrollViewRef}) => {
 							flexDirection: "row"
 						}}
 					>
-						<Heart color={"blue"}/>
+						<Heart color={"red"} cornerColor={"#faff00"}/>
 						<Text
 							style={{
 								marginStart: 5
