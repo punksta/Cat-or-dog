@@ -6,12 +6,7 @@ const Heart = ({color, cornerColor, ...props}) => (
 	<View {...props} style={styles.wrapper}>
 		<Image
 			resizeMode={"contain"}
-			style={[styles.heart, {tintColor: cornerColor}]}
-			source={require("../img/heart.png")}
-		/>
-		<Image
-			resizeMode={"contain"}
-			style={[styles.innerHeart, {tintColor: color}]}
+			style={[styles.heart, {tintColor: color}]}
 			source={require("../img/heart.png")}
 		/>
 	</View>
@@ -25,26 +20,26 @@ export default onlyUpdateForKeys(["color"])(Heart);
 
 const styles = StyleSheet.create({
 	wrapper: {
-		width: 50,
-		height: 50,
+		width: 30,
+		height: 30,
 		justifyContent: "center",
 		alignItems: "center"
 	},
 	heart: {
 		position: "absolute",
-		width: 50,
-		height: 50
+		width: 30,
+		height: 30
 	},
 	innerHeart: {
 		position: "absolute",
-		width: 50,
-		height: 50,
+		width: 30,
+		height: 30,
 		transform: [
 			{
-				scaleX: 0.8
+				scaleX: 0.9
 			},
 			{
-				scaleY: 0.8
+				scaleY: 0.9
 			}
 		]
 	}

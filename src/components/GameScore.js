@@ -8,11 +8,9 @@ const GameScore = ({rightAnswerCount, lifeCount}) => {
 	return (
 		<View style={styles.root}>
 			<View style={styles.heartWrapper}>
-				<Heart color={"red"} cornerColor={"black"}/>
-
-				<View style={styles.leftTextWrapper}>
-					<Text style={styles.leftText}>{lifeCount}</Text>
-				</View>
+				{Array.from(Array(lifeCount)).map((_, i) => {
+					return <Heart color={"red"} cornerColor={"black"} />;
+				})}
 			</View>
 			<Text style={styles.rightText}>{rightAnswerCount}</Text>
 		</View>
@@ -51,6 +49,7 @@ const styles = StyleSheet.create({
 		alignItems: "center"
 	},
 	heartWrapper: {
+		margin: 8,
 		width: 50
 	},
 	root: {
