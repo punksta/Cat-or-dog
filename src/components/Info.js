@@ -70,7 +70,7 @@ const Info = ({scrollViewRef}) => {
 							flexDirection: "row"
 						}}
 					>
-						<Heart color={"red"} cornerColor={"#faff00"}/>
+						<Heart color={"red"} cornerColor={"#faff00"} />
 						<Text
 							style={{
 								marginStart: 5
@@ -148,7 +148,8 @@ const Info = ({scrollViewRef}) => {
 						marginBottom: 8
 					}}
 				>
-					"Cat, Screaming, A.wav" by InspectorJ (www.jshaw.co.uk) of Freesound.org
+					"Cat, Screaming, A.wav" by InspectorJ (www.jshaw.co.uk) of
+					Freesound.org
 				</Text>
 			</View>
 		</ScrollView>

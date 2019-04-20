@@ -9,7 +9,9 @@ const GameScore = ({rightAnswerCount, lifeCount}) => {
 		<View style={styles.root}>
 			<View style={styles.heartWrapper}>
 				{Array.from(Array(lifeCount)).map((_, i) => {
-					return <Heart color={"red"} cornerColor={"black"} />;
+					return (
+						<Heart key={i.toString()} color={"red"} cornerColor={"black"} />
+					);
 				})}
 			</View>
 			<Text style={styles.rightText}>{rightAnswerCount}</Text>
