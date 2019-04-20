@@ -3,5 +3,5 @@ matrix:
   - stage: flow
     language: node_js
     node_js: 11.14.0
-    install: npm
+    install: npm ci
     script: npm run flow
