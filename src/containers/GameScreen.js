@@ -231,7 +231,6 @@ class GameScreen extends React.Component<$FlowFixMeProps, State<*>> {
 				{!this.state.isGameEnded && (
 					<AppearOnMount duration={700} translateYStart={60}>
 						<GameBottomBar
-							style={styles.bottomBar}
 							leftProperty={leftProperty}
 							rightProperty={rightProperty}
 						/>
@@ -251,11 +250,6 @@ const styles = StyleSheet.create({
 	},
 	container: {
 		flex: 1
-	},
-	bottomBar: {
-		width: "100%",
-		flexDirection: "row",
-		height: 60
 	}
 });
 

@@ -11,6 +11,14 @@ import {
 import {photoSources} from "../data/index";
 import Heart from "./Heart";
 import RightAnswerCount from "./RightAnswerCount";
+import GameBottomBar from "./GameBottomBar";
+import TouchableItem from "react-navigation/src/views/TouchableItem";
+import GameItem from "./GameItem";
+import {getPhotosOfProperties} from "../data/index";
+import {makePhotoSourceSize} from "../data/utils";
+import DragDemo from "./DragDemo";
+
+const getItemSize = makePhotoSourceSize(90);
 
 const Info = ({scrollViewRef}) => {
 	return (
@@ -29,16 +37,64 @@ const Info = ({scrollViewRef}) => {
 				<View style={{}}>
 					<Text
 						style={{
-							marginTop: 16,
-							fontSize: 20
+							marginTop: 5,
+							fontSize: 20,
+							color: "black"
 						}}
 					>
 						How To play
 					</Text>
-					<Text>1) Select photo categories</Text>
-					<Text>2) Swipe photos according the categories</Text>
-					<Text>3) Game ends after 5th mistake</Text>
+					<Text style={{fontSize: 15, color: "black"}}>
+						1) Swipe photos according the categories
+					</Text>
 
+					<View style={{backgroundColor: "gray", flex: 1}}>
+						<DragDemo>
+							<GameItem
+								style={{
+									marginTop: 4,
+									alignSelf: "center"
+								}}
+								item={getPhotosOfProperties("dog")[1]}
+								getItemSize={getItemSize}
+							/>
+						</DragDemo>
+						<View
+							style={{
+								flexDirection: "row",
+								flex: 1,
+								paddingVertical: 16,
+								justifyContent: "space-evenly"
+							}}
+						>
+							<GameItem
+								style={{
+									marginBottom: 15
+								}}
+								item={getPhotosOfProperties("cat")[0]}
+								getItemSize={getItemSize}
+							/>
+							<GameItem
+								style={{
+									marginTop: 15
+								}}
+								item={getPhotosOfProperties("dog")[0]}
+								getItemSize={getItemSize}
+							/>
+						</View>
+						<GameBottomBar
+							style={{height: 40}}
+							leftProperty={"cat"}
+							rightProperty={"dog"}
+						/>
+					</View>
+					<Text style={{fontSize: 15, color: "black"}}>
+						2) DON'T touch the danger dog photo
+					</Text>
+					<Image
+						style={{width: 100, height: 100}}
+						source={require("../img/dog_toilet.png")}
+					/>
 					<Text
 						style={{
 							marginTop: 16,

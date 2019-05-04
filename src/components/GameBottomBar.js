@@ -8,7 +8,8 @@ type Props = {
 	leftProperty: string,
 	rightProperty: string,
 	leftProprtyColor?: string,
-	rightpropertyColor?: string
+	rightpropertyColor?: string,
+	style?: any
 };
 
 const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
@@ -19,27 +20,16 @@ const GameBottomBar = (props: Props) => {
 		rightProperty,
 		leftProprtyColor,
 		rightpropertyColor,
+		style,
 		...rest
 	} = props;
 	return (
-		<View {...rest}>
-			<View
-				style={[
-					styles.textWrapper,
-					styles.textWrapperStart,
-					{backgroundColor: leftProprtyColor}
-				]}
-			>
+		<View style={[styles.root, style]} {...rest}>
+			<View style={[styles.textWrapper, {backgroundColor: leftProprtyColor}]}>
 				<Text style={styles.text}>{leftProperty.toUpperCase()}</Text>
 			</View>
 
-			<View
-				style={[
-					styles.textWrapper,
-					styles.textWrapperEnd,
-					{backgroundColor: rightpropertyColor}
-				]}
-			>
+			<View style={[styles.textWrapper, {backgroundColor: rightpropertyColor}]}>
 				<Text style={styles.text}>{rightProperty.toUpperCase()}</Text>
 			</View>
 		</View>
@@ -52,24 +42,23 @@ GameBottomBar.defaultProps = {
 };
 
 const styles = StyleSheet.create({
+	root: {
+		width: "100%",
+		flexDirection: "row",
+		height: 60
+	},
 	text: {
+		alignSelf: "center",
 		textAlign: "center",
-		flex: 1,
 		fontWeight: "bold",
 		color: "#f8f7ff",
 		fontSize: 20
 	},
 	textWrapper: {
 		flex: 1,
-		padding: 15
-	},
-	textWrapperStart: {
-		// borderTopEndRadius: 20,
-		// marginEnd: 8
-	},
-	textWrapperEnd: {
-		// borderTopStartRadius: 20,
-		// marginStart: 8
+		paddingHorizontal: 15,
+		justifyContent: "center",
+		alignItems: "center"
 	}
 });
 
