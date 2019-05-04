@@ -7,9 +7,9 @@ type Props = {
 	isMusicEnabled: boolean,
 	isCrashReportsEnabled: boolean,
 	isEventsEnabled: boolean,
-	setMusicEnabled: (boolean) => void,
-	setEventsEnabled: (boolean) => void,
-	setCrashEnabled: (boolean) => void
+	setMusicEnabled: boolean => void,
+	setEventsEnabled: boolean => void,
+	setCrashEnabled: boolean => void
 };
 
 const showPrivacyNote = (text, message, link) => {
