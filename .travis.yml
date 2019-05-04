@@ -43,3 +43,15 @@ matrix:
       script:
         - ./gradlew assembleRelease
 
+      before_deploy:
+        - npm install -g appcenter-cli@1.1.15
+
+      deploy:
+        provider: script
+        script: ./distribute_android_hockey_app.sh
+        skip_cleanup: true
+        on:
+          branch: dev
+
+
+
