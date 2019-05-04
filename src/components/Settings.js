@@ -52,7 +52,6 @@ const SettingsButtons = (props: Props) => {
 				Settings
 			</Text>
 
-
 			<SettingSwitch
 				text={"In app sounds"}
 				isEnabled={props.isMusicEnabled}

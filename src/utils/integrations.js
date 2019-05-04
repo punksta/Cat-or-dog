@@ -2,7 +2,6 @@ import {AsyncStorage} from "react-native";
 import {Client, Configuration} from "bugsnag-react-native";
 import Analitics from "appcenter-analytics";
 
-
 export const isEventsEnabled = async () =>
 	(await AsyncStorage.getItem("EVENTS")) === "true";
 
@@ -19,12 +18,10 @@ export const setCrashEnabled = async isEnabled => {
 	await setUpCrashReports();
 };
 
-
 export const setUpEvents = async () => {
 	const isEnabled = await isEventsEnabled();
 	await Analitics.setEnabled(isEnabled);
 };
-
 
 let bugsnag;
 

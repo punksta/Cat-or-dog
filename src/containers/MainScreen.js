@@ -6,7 +6,7 @@ import HomeScreenBackground from "../components/HomeScreenBackground";
 import Info from "../components/Info";
 import AppearOnMount from "../components/AppearOnMount";
 import ConnectedUserDegree from "../components/ConnectedUserDegree";
-import SettingsContainer from './SettingsContainer'
+import SettingsContainer from "./SettingsContainer";
 
 import PopupDialog, {SlideAnimation} from "react-native-popup-dialog";
 
@@ -91,7 +91,7 @@ const MainScreen = ({
 					this.popupDialog2 = popupDialog;
 				}}
 			>
-				<SettingsContainer/>
+				<SettingsContainer />
 			</PopupDialog>
 		</View>
 	);

@@ -4,7 +4,9 @@ matrix:
       language: node_js
       node_js: 11.14.0
       install: npm ci
-      script: npm run flow
+      script:
+        - npm run flow
+        - npm run prettier-check
 
     - stage: build_android
       language: android

@@ -26,8 +26,6 @@ const Info = ({scrollViewRef}) => {
 					padding: 16
 				}}
 			>
-
-
 				<View style={{}}>
 					<Text
 						style={{
