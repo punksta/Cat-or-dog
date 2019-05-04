@@ -1,3 +1,5 @@
+//@flow
+
 import {connect} from "react-redux";
 import {
 	compose,
@@ -57,7 +59,7 @@ const hoc = compose(
 					isEventsEnabled
 				};
 			},
-			setCrashEnabmed: () => isCrashReportsEnabled => {
+			setCrashEnabled: () => isCrashReportsEnabled => {
 				setCrashEnabled(isCrashReportsEnabled);
 				return {
 					isCrashReportsEnabled

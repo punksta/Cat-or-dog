@@ -1,3 +1,4 @@
+// @flow
 import React from "react";
 import {View, Linking, Alert, Text} from "react-native";
 import SettingSwitch from "./SettingSwitch";
@@ -6,7 +7,9 @@ type Props = {
 	isMusicEnabled: boolean,
 	isCrashReportsEnabled: boolean,
 	isEventsEnabled: boolean,
-	setMusicEnabled: () => void
+	setMusicEnabled: (boolean) => void,
+	setEventsEnabled: (boolean) => void,
+	setCrashEnabled: (boolean) => void
 };
 
 const showPrivacyNote = (text, message, link) => {
@@ -60,7 +63,7 @@ const SettingsButtons = (props: Props) => {
 			<SettingSwitch
 				text={"Crash reports"}
 				isEnabled={props.isCrashReportsEnabled}
-				onValueChange={props.setCrashEnabmed}
+				onValueChange={props.setCrashEnabled}
 				infoClick={() =>
 					showPrivacyNote(
 						"Anonymous crash reports",
