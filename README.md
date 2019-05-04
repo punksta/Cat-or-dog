@@ -1,7 +1,7 @@
 # Cat or Dog?
-[![pipeline status](https://gitlab.com/punksta/cat-or-dog-ci/badges/master/pipeline.svg)](https://gitlab.com/punksta/cat-or-dog-ci/commits/master)
+[![Build Status](https://travis-ci.org/punksta/Cat-or-dog.svg?branch=master)](https://travis-ci.org/punksta/Cat-or-dog)
 
-Mobile game where you need swipe photos of animals to match categories. I've made it just for fun and as some `Animated` api epxercise. 
+Mobile game where you need swipe photos of animals to match categories. I've made it just for fun and as some `Animated` api practice. 
 
 youtube video:
 <div align="center">
@@ -11,7 +11,7 @@ youtube video:
 ### build with
 react-native, redux, [react-native-gesture-handler](https://github.com/kmagiera/react-native-gesture-handler).
 
-No ads, gsm, trackers, crashreports, etc..
+No ads, gsm, etc..
 
 ## To do
 - test app on ios
@@ -20,7 +20,7 @@ No ads, gsm, trackers, crashreports, etc..
 - add action game objects: extra live, speed slower, etc...
 
 ## Contribution
-Use prettier and flow npm scripts before pl.
+make sure ci is green
 
 #### adding\changing photos
 1) add photo file to `src/img`
