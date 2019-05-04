@@ -9,7 +9,8 @@ const MainScreenButtons = ({
 	onRatingClick,
 	onInfoClick,
 	isCustomGameVisible,
-	isLevelsVisible
+	isLevelsVisible,
+	onSettingsClick
 }) => {
 	return (
 		<View
@@ -55,6 +56,14 @@ const MainScreenButtons = ({
 				}}
 			>
 				<MainMenuButton onPress={onInfoClick} title={"info"} />
+			</View>
+			<View
+				style={{
+					width: 250,
+					marginVertical: 8
+				}}
+			>
+				<MainMenuButton onPress={onSettingsClick} title={"Settings"} />
 			</View>
 		</View>
 	);

@@ -26,21 +26,7 @@ const Info = ({scrollViewRef}) => {
 					padding: 16
 				}}
 			>
-				<Text
-					style={{
-						fontSize: 25
-					}}
-				>
-					Cat or Dog?
-				</Text>
 
-				<Text
-					style={{
-						fontSize: 12
-					}}
-				>
-					version: 1.0.3
-				</Text>
 
 				<View style={{}}>
 					<Text

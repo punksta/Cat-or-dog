@@ -6,7 +6,7 @@ import HomeScreenBackground from "../components/HomeScreenBackground";
 import Info from "../components/Info";
 import AppearOnMount from "../components/AppearOnMount";
 import ConnectedUserDegree from "../components/ConnectedUserDegree";
-import MusicController from "./MusicController";
+import SettingsContainer from './SettingsContainer'
 
 import PopupDialog, {SlideAnimation} from "react-native-popup-dialog";
 
@@ -60,9 +60,11 @@ const MainScreen = ({
 							this.scrollView.scrollTo({y: 0, animated: false});
 							this.popupDialog.show();
 						}}
+						onSettingsClick={() => {
+							this.popupDialog2.show();
+						}}
 						newGameClick={newGameClick}
 					/>
-					<MusicController />
 				</View>
 			</AppearOnMount>
 
@@ -79,6 +81,17 @@ const MainScreen = ({
 						this.scrollView = comp;
 					}}
 				/>
+			</PopupDialog>
+
+			<PopupDialog
+				width={0.9}
+				height={0.7}
+				dialogAnimation={slideAnimation}
+				ref={popupDialog => {
+					this.popupDialog2 = popupDialog;
+				}}
+			>
+				<SettingsContainer/>
 			</PopupDialog>
 		</View>
 	);

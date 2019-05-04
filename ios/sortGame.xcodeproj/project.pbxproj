@@ -44,6 +44,11 @@
 		F521CC3EB28D4678974A4914 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D64C1B9E05E54689AF759AA9 /* libBVLinearGradient.a */; };
 		E91CC28BFFE843C6AEA5ED9F /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CA2C19306ED4E638864331B /* libRNGestureHandler.a */; };
 		C0CB6B4AAF3747F1917B5A43 /* libRNSound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5D7C906FE545EA8F107AA2 /* libRNSound.a */; };
+		A7D9905570D3497FA2A5DD4B /* libAppCenterReactNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F1A47FB331454CAE3E6DEF /* libAppCenterReactNative.a */; };
+		77D6B4D4220A419EA8B40163 /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = D845E40170224EB6B7EEF08F /* AppCenter-Config.plist */; };
+		ABEA92B6646A4BB1B4A8D073 /* libAppCenterReactNativeAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28225BDDE8E94B50B88C3C98 /* libAppCenterReactNativeAnalytics.a */; };
+		B078CB9E42D64E1193731FB3 /* libBugsnagReactNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7897044281F4DF9914A8C62 /* libBugsnagReactNative.a */; };
+		557947C954514F71808AF60B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C7BC30E9FEEE4E11AC45C040 /* libz.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -359,6 +364,14 @@
 		8CA2C19306ED4E638864331B /* libRNGestureHandler.a */ = {isa = PBXFileReference; name = "libRNGestureHandler.a"; path = "libRNGestureHandler.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		0A1DB073FD0E4D009653D3D8 /* RNSound.xcodeproj */ = {isa = PBXFileReference; name = "RNSound.xcodeproj"; path = "../node_modules/react-native-sound/RNSound.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		2B5D7C906FE545EA8F107AA2 /* libRNSound.a */ = {isa = PBXFileReference; name = "libRNSound.a"; path = "libRNSound.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		A2652611A03E43B59BE1412F /* AppCenterReactNative.xcodeproj */ = {isa = PBXFileReference; name = "AppCenterReactNative.xcodeproj"; path = "../node_modules/appcenter/ios/AppCenterReactNative.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		B0F1A47FB331454CAE3E6DEF /* libAppCenterReactNative.a */ = {isa = PBXFileReference; name = "libAppCenterReactNative.a"; path = "libAppCenterReactNative.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		D845E40170224EB6B7EEF08F /* AppCenter-Config.plist */ = {isa = PBXFileReference; name = "AppCenter-Config.plist"; path = "sortGame/AppCenter-Config.plist"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = text.plist.xml; explicitFileType = undefined; includeInIndex = 0; };
+		BA584D14BC4044E39AC56D4B /* AppCenterReactNativeAnalytics.xcodeproj */ = {isa = PBXFileReference; name = "AppCenterReactNativeAnalytics.xcodeproj"; path = "../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		28225BDDE8E94B50B88C3C98 /* libAppCenterReactNativeAnalytics.a */ = {isa = PBXFileReference; name = "libAppCenterReactNativeAnalytics.a"; path = "libAppCenterReactNativeAnalytics.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		20B231CB8C134B12B837E823 /* BugsnagReactNative.xcodeproj */ = {isa = PBXFileReference; name = "BugsnagReactNative.xcodeproj"; path = "../node_modules/bugsnag-react-native/cocoa/BugsnagReactNative.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		F7897044281F4DF9914A8C62 /* libBugsnagReactNative.a */ = {isa = PBXFileReference; name = "libBugsnagReactNative.a"; path = "libBugsnagReactNative.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		C7BC30E9FEEE4E11AC45C040 /* libz.tbd */ = {isa = PBXFileReference; name = "libz.tbd"; path = "usr/lib/libz.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -390,6 +403,10 @@
 				F521CC3EB28D4678974A4914 /* libBVLinearGradient.a in Frameworks */,
 				E91CC28BFFE843C6AEA5ED9F /* libRNGestureHandler.a in Frameworks */,
 				C0CB6B4AAF3747F1917B5A43 /* libRNSound.a in Frameworks */,
+				A7D9905570D3497FA2A5DD4B /* libAppCenterReactNative.a in Frameworks */,
+				ABEA92B6646A4BB1B4A8D073 /* libAppCenterReactNativeAnalytics.a in Frameworks */,
+				B078CB9E42D64E1193731FB3 /* libBugsnagReactNative.a in Frameworks */,
+				557947C954514F71808AF60B /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,6 +556,7 @@
 			isa = PBXGroup;
 			children = (
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
+				C7BC30E9FEEE4E11AC45C040 /* libz.tbd */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -579,6 +597,9 @@
 				DE8F1DC1A36E4985BC48BCF5 /* BVLinearGradient.xcodeproj */,
 				7880ED94D39E436EA8112CC1 /* RNGestureHandler.xcodeproj */,
 				0A1DB073FD0E4D009653D3D8 /* RNSound.xcodeproj */,
+				A2652611A03E43B59BE1412F /* AppCenterReactNative.xcodeproj */,
+				BA584D14BC4044E39AC56D4B /* AppCenterReactNativeAnalytics.xcodeproj */,
+				20B231CB8C134B12B837E823 /* BugsnagReactNative.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -601,6 +622,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				1CF69622A5994D64A09E9856 /* Resources */,
+				D845E40170224EB6B7EEF08F /* AppCenter-Config.plist */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -1089,6 +1111,7 @@
 				8421A2D44CE440C69F193642 /* MavenPro-Bold.ttf in Resources */,
 				E533A80ABF694958A94394A4 /* MavenPro-Medium.ttf in Resources */,
 				011E034382EE43388A94E903 /* MavenPro-Regular.ttf in Resources */,
+				77D6B4D4220A419EA8B40163 /* AppCenter-Config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1229,6 +1252,9 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/appcenter/ios/AppCenterReactNative",
+					"$(SRCROOT)/../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics",
+					"$(SRCROOT)/../node_modules/bugsnag-react-native/cocoa/**",
 				);
 			};
 			name = Debug;
@@ -1256,6 +1282,9 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/appcenter/ios/AppCenterReactNative",
+					"$(SRCROOT)/../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics",
+					"$(SRCROOT)/../node_modules/bugsnag-react-native/cocoa/**",
 				);
 			};
 			name = Release;
@@ -1280,6 +1309,9 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/appcenter/ios/AppCenterReactNative",
+					"$(SRCROOT)/../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics",
+					"$(SRCROOT)/../node_modules/bugsnag-react-native/cocoa/**",
 				);
 			};
 			name = Debug;
@@ -1303,6 +1335,9 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/appcenter/ios/AppCenterReactNative",
+					"$(SRCROOT)/../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics",
+					"$(SRCROOT)/../node_modules/bugsnag-react-native/cocoa/**",
 				);
 			};
 			name = Release;
@@ -1339,6 +1374,9 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/appcenter/ios/AppCenterReactNative",
+					"$(SRCROOT)/../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics",
+					"$(SRCROOT)/../node_modules/bugsnag-react-native/cocoa/**",
 				);
 			};
 			name = Debug;
@@ -1375,6 +1413,9 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/appcenter/ios/AppCenterReactNative",
+					"$(SRCROOT)/../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics",
+					"$(SRCROOT)/../node_modules/bugsnag-react-native/cocoa/**",
 				);
 			};
 			name = Release;
@@ -1410,6 +1451,9 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/appcenter/ios/AppCenterReactNative",
+					"$(SRCROOT)/../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics",
+					"$(SRCROOT)/../node_modules/bugsnag-react-native/cocoa/**",
 				);
 			};
 			name = Debug;
@@ -1445,6 +1489,9 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/appcenter/ios/AppCenterReactNative",
+					"$(SRCROOT)/../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics",
+					"$(SRCROOT)/../node_modules/bugsnag-react-native/cocoa/**",
 				);
 			};
 			name = Release;
