@@ -48,7 +48,7 @@ matrix:
 
       deploy:
         provider: script
-        script: ./distribute_android_hockey_app.sh
+        script: bash distribute_android_hockey_app.sh
         skip_cleanup: true
         on:
           branch: dev
