@@ -33,7 +33,7 @@ const initBagSnag = () => {
 		configuration.registerBeforeSendCallback(() => {
 			return _isBugsEnabled;
 		});
-		bugsnag = new Clinet(configuration);
+		bugsnag = new Client(configuration);
 	}
 };
 
