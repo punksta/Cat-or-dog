@@ -133,7 +133,8 @@ export const photoSources: Array<PhotoSource> = [
 	},
 	{
 		resource: require("../img/muffin_photo_1.png"),
-		source: "https://commons.wikimedia.org/wiki/File:Blueberry_muffin,_unwrapped.jpg",
+		source:
+			"https://commons.wikimedia.org/wiki/File:Blueberry_muffin,_unwrapped.jpg",
 		tags: ["muffin"]
 	},
 	{
@@ -143,7 +144,8 @@ export const photoSources: Array<PhotoSource> = [
 	},
 	{
 		resource: require("../img/muffin_photo_3.jpg"),
-		source: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Blueberry_muffin%2C_wrapped.jpg/280px-Blueberry_muffin%2C_wrapped.jpg",
+		source:
+			"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Blueberry_muffin%2C_wrapped.jpg/280px-Blueberry_muffin%2C_wrapped.jpg",
 		tags: ["muffin"]
 	},
 	{
@@ -158,7 +160,8 @@ export const photoSources: Array<PhotoSource> = [
 	},
 	{
 		resource: require("../img/chihuahua-2.jpg"),
-		source: "https://www.pexels.com/photo/adorable-animal-breed-chihuahua-191340/",
+		source:
+			"https://www.pexels.com/photo/adorable-animal-breed-chihuahua-191340/",
 		tags: ["chihuahua"]
 	},
 	{
@@ -168,7 +171,8 @@ export const photoSources: Array<PhotoSource> = [
 	},
 	{
 		resource: require("../img/chihuahua-5.jpg"),
-		source: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Lozaconferencia.jpg",
+		source:
+			"https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Lozaconferencia.jpg",
 		tags: ["chihuahua"]
 	}
 ].map(item => ({
