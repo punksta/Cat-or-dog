@@ -130,6 +130,46 @@ export const photoSources: Array<PhotoSource> = [
 		source: "",
 		tags: [],
 		action: "death_on_touch"
+	},
+	{
+		resource: require("../img/muffin_photo_1.png"),
+		source: "https://commons.wikimedia.org/wiki/File:Blueberry_muffin,_unwrapped.jpg",
+		tags: ["muffin"]
+	},
+	{
+		resource: require("../img/muffin_photo_2.png"),
+		source: "http://www.picserver.org/b/blueberry-muffin.html",
+		tags: ["muffin"]
+	},
+	{
+		resource: require("../img/muffin_photo_3.jpg"),
+		source: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Blueberry_muffin%2C_wrapped.jpg/280px-Blueberry_muffin%2C_wrapped.jpg",
+		tags: ["muffin"]
+	},
+	{
+		resource: require("../img/muffin_photo_4.jpg"),
+		source: "https://commons.wikimedia.org/wiki/File:Blueberry_muffin.JPG",
+		tags: ["muffin"]
+	},
+	{
+		resource: require("../img/chihuahua-1.jpg"),
+		source: "https://www.pexels.com/photo/dog-chihuahua-sobel-50718/",
+		tags: ["chihuahua"]
+	},
+	{
+		resource: require("../img/chihuahua-2.jpg"),
+		source: "https://www.pexels.com/photo/adorable-animal-breed-chihuahua-191340/",
+		tags: ["chihuahua"]
+	},
+	{
+		resource: require("../img/chihuahua-4.jpg"),
+		source: "https://www.pexels.com/photo/chihuahua-dog-243791/",
+		tags: ["chihuahua"]
+	},
+	{
+		resource: require("../img/chihuahua-5.jpg"),
+		source: "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Lozaconferencia.jpg",
+		tags: ["chihuahua"]
 	}
 ].map(item => ({
 	...item,
