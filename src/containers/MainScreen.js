@@ -53,7 +53,7 @@ const MainScreen = ({
 
 					<MainScreenButtons
 						isCustomGameVisible
-						isLevelsVisible={false}
+						isLevelsVisible={true}
 						onCofigureGameClick={onCofigureGameClick}
 						onRatingClick={ratingsClick}
 						onInfoClick={() => {

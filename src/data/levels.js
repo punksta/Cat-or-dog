@@ -14,17 +14,17 @@ const levels: Array<Level> = [
 	{
 		name: 1,
 		passingScore: 10,
-		leftCategory: "fat cat",
-		rightCategory: "sad dog",
+		leftCategory: "cat",
+		rightCategory: "dog",
 		unlockCategories: [],
 		newItemProvider: x => Math.max(1200, Math.random() * 4500 - 50 * x),
 		fallingIntervalProvider: x => Math.max(3500, 5000 - Math.random() * 1500)
 	},
 	{
 		name: 2,
-		passingScore: 10,
-		leftCategory: "fat cat",
-		rightCategory: "sad dog",
+		passingScore: 15,
+		leftCategory: "muffin",
+		rightCategory: "chihuahua",
 		unlockCategories: ["fat cat", "sad dog"],
 		newItemProvider: x => Math.max(1000, 1500 - 25 * x),
 		fallingIntervalProvider: x => Math.max(5500, 6000 - 35 * x)
@@ -40,7 +40,7 @@ const levels: Array<Level> = [
 	},
 	{
 		name: 4,
-		passingScore: 20,
+		passingScore: 25,
 		leftCategory: "amazed dog",
 		rightCategory: "fat cat",
 		unlockCategories: ["fat cat", "amazed dog"],
@@ -58,7 +58,7 @@ const levels: Array<Level> = [
 	},
 	{
 		name: 6,
-		passingScore: 30,
+		passingScore: 35,
 		leftCategory: "angry cat",
 		rightCategory: "sad dog",
 		unlockCategories: ["angry cat", "sad dog"],
@@ -76,7 +76,7 @@ const levels: Array<Level> = [
 	},
 	{
 		name: 8,
-		passingScore: 40,
+		passingScore: 45,
 		leftCategory: "playing dog",
 		rightCategory: "fat cat",
 		unlockCategories: ["playing dog", "fat cat"],
