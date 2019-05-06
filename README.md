@@ -50,3 +50,7 @@ const levelExample = {
 - source code: MIT
 - assets: Creative Commons
 
+
+
+### Sponsors
+<img height="70" src="./bugsnag_logo_navy.svg"/> 
