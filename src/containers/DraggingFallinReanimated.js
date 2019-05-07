@@ -35,7 +35,7 @@ const {
 	concat
 } = Animated;
 
-const runRotateTimer = (clock, gestureState, dest = 360) => {
+const runRotateTimer = (clock, gestureState) => {
 	const state = {
 		finished: new Value(0),
 		position: new Value(0),
@@ -144,7 +144,8 @@ const runScaleTimer = (clock, gestureState) => {
 		})
 	]);
 };
-function interaction(gestureTranslation, gestureState) {
+
+function translateAnimation(gestureTranslation, gestureState) {
 	const dragging = new Value(0);
 	const start = new Value(0);
 	const position = new Value(0);
@@ -178,8 +179,8 @@ export default class DraggingFallinReanimated extends React.Component {
 			}
 		]);
 
-		this._transX = interaction(gestureX, state);
-		this._transY = interaction(gestureY, state);
+		this._transX = translateAnimation(gestureX, state);
+		this._transY = translateAnimation(gestureY, state);
 
 		this.scale = runScaleTimer(new Clock(), state);
 		this.rotate = runRotateTimer(new Clock(), state);
