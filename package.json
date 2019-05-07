@@ -27,6 +27,7 @@
     "react-native-linear-gradient": "^2.5.4",
     "react-native-material-menu": "^0.4.0",
     "react-native-popup-dialog": "^0.15.0",
+    "react-native-reanimated": "^1.0.1",
     "react-native-sound": "^0.10.12",
     "react-navigation": "^2.14.0",
     "react-redux": "^5.0.7",
