@@ -14,6 +14,7 @@ const {
 	greaterThan,
 	set,
 	and,
+	not,
 	neq,
 	Value,
 	event,
@@ -40,19 +41,15 @@ const runRotateTimer = (clock, gestureState, dest = 360) => {
 
 	const config = {
 		duration: new Value(2000),
-		toValue: new Value(dest),
+		toValue: new Value(-1),
 		easing: Easing.linear
 	};
 
 	const restartAnimation = [
 		// we stop
 		stopClock(clock),
-
-		// set flag ready to be restarted
 		set(state.finished, 0),
-		// same value as the initial defined in the state creation
 		set(state.position, 0),
-		// very important to reset this ones !!! as mentioned in the doc about timing is saying
 		set(state.time, 0),
 		set(state.frameTime, 0),
 		set(config.toValue, 360),
@@ -61,30 +58,19 @@ const runRotateTimer = (clock, gestureState, dest = 360) => {
 		startClock(clock)
 	];
 
-	const isDragging = or(
-		eq(gestureState, State.ACTIVE),
-		eq(gestureState, State.BEGAN)
+	const isNotDragging = and(
+		neq(gestureState, State.ACTIVE),
+		neq(gestureState, State.BEGAN)
 	);
 
 	return block([
-		startClock(clock),
+		cond(clockRunning(clock), 0, restartAnimation),
 		timing(clock, state, config),
-		cond(eq(gestureState, State.BEGAN), [
-			stopClock(clock),
-			set(config.duration, 300),
-			set(config.toValue, cond(greaterThan(state.position, 180), 360, 0)),
-			startClock(clock)
+		cond(and(eq(gestureState, State.BEGAN), eq(config.duration, 200)), [
+			set(config.duration, 1500),
+			set(config.toValue, cond(greaterThan(state.position, 180), 360, 0))
 		]),
-		// cond(
-		// 	isDragging,
-		// 	// stop rotating animation when user is touching object
-		// 	[
-		//
-		//
-		// 	],
-		// 	// restart animation when user is not touching object and previous animation was finished
-		// 	cond(state.finished, restartAnimation)
-		// ),
+		cond(and(eq(state.finished, 1), isNotDragging), restartAnimation),
 		state.position
 	]);
 };
@@ -144,14 +130,6 @@ function interaction(gestureTranslation, gestureState) {
 		],
 		[set(dragging, 0), position]
 	);
-}
-
-function interaction2(gestureState) {
-	const dragging = new Value(0);
-	const start = new Value(0);
-	const position = new Value(0);
-
-	return cond(eq(gestureState, State.ACTIVE), 1.3, 1);
 }
 
 export default class DraggingFallinReanimated extends React.Component {
