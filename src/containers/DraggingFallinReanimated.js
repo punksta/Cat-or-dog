@@ -160,6 +160,75 @@ function translateAnimation(gestureTranslation, gestureState) {
 	);
 }
 
+function translateAnimationY(
+	gestureTranslation,
+	gestureState,
+	duration = 1500,
+	toValue = 450
+) {
+	const dragging = new Value(0);
+	const start = new Value(0);
+	const position = new Value(0);
+	const clock = new Clock();
+
+	const state = {
+		finished: new Value(0),
+		position: position,
+		time: new Value(0),
+		frameTime: new Value(0)
+	};
+
+	const config = {
+		duration: new Value(duration),
+		toValue: new Value(-1),
+		easing: Easing.inOut(Easing.ease)
+	};
+
+	const isNotDragging = and(
+		neq(gestureState, State.ACTIVE),
+		neq(gestureState, State.BEGAN)
+	);
+
+	const isDragging = or(
+		eq(gestureState, State.ACTIVE),
+		eq(gestureState, State.BEGAN)
+	);
+
+	return block([
+		cond(
+			and(isNotDragging, not(clockRunning(clock))),
+			block([
+				set(config.toValue, toValue),
+				set(state.finished, 0),
+				set(state.time, 0),
+				set(state.frameTime, 0),
+				set(
+					config.duration,
+					multiply(duration, sub(1, divide(state.position, toValue)))
+				),
+				startClock(clock)
+			])
+		),
+		cond(isDragging, [
+			stopClock(clock),
+			set(state.finished, 1),
+			set(state.time, 0),
+			set(state.frameTime, 0)
+		]),
+		cond(
+			eq(gestureState, State.ACTIVE),
+			[
+				cond(dragging, 0, [set(dragging, 1), set(start, position)]),
+				set(position, add(start, gestureTranslation))
+			],
+			[set(dragging, 0)]
+		),
+
+		timing(clock, state, config),
+		position
+	]);
+}
+
 export default class DraggingFallinReanimated extends React.Component {
 	constructor(props) {
 		super(props);
@@ -180,7 +249,7 @@ export default class DraggingFallinReanimated extends React.Component {
 		]);
 
 		this._transX = translateAnimation(gestureX, state);
-		this._transY = translateAnimation(gestureY, state);
+		this._transY = translateAnimationY(gestureY, state);
 
 		this.scale = runScaleTimer(new Clock(), state);
 		this.rotate = runRotateTimer(new Clock(), state);
