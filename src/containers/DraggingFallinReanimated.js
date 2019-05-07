@@ -9,14 +9,18 @@ const {
 	cond,
 	eq,
 	or,
+	abs,
 	add,
 	spring,
 	greaterThan,
 	set,
 	and,
 	not,
+	diff,
 	neq,
 	Value,
+	sub,
+	multiply,
 	event,
 	interpolate,
 	Extrapolate,
@@ -45,15 +49,19 @@ const runRotateTimer = (clock, gestureState, dest = 360) => {
 		easing: Easing.linear
 	};
 
-	const restartAnimation = [
+	const restartAnimation = (
+		toValue = 360,
+		duration = 2000,
+		resetPosition = true
+	) => [
 		// we stop
 		stopClock(clock),
 		set(state.finished, 0),
-		set(state.position, 0),
+		resetPosition ? set(state.position, 0) : 1,
 		set(state.time, 0),
 		set(state.frameTime, 0),
-		set(config.toValue, 360),
-		set(config.duration, 2000),
+		set(config.toValue, toValue),
+		set(config.duration, duration),
 		// and we restart
 		startClock(clock)
 	];
@@ -63,19 +71,38 @@ const runRotateTimer = (clock, gestureState, dest = 360) => {
 		neq(gestureState, State.BEGAN)
 	);
 
+	const pendingPosition = () => cond(greaterThan(state.position, 180), 360, 0);
+
+	const pendingRotate = () =>
+		cond(
+			greaterThan(state.position, 180),
+			sub(360, state.position),
+			state.position
+		);
+
+	// 180           - 1.0
+	// pendingRotate - x
+	const pendingDurationP = () => divide(pendingRotate(), 180);
+
+	const pendingDuration = multiply(pendingDurationP(), 300);
+
 	return block([
-		cond(clockRunning(clock), 0, restartAnimation),
+		cond(clockRunning(clock), 0, restartAnimation()),
 		timing(clock, state, config),
-		cond(and(eq(gestureState, State.BEGAN), eq(config.duration, 200)), [
-			set(config.duration, 1500),
-			set(config.toValue, cond(greaterThan(state.position, 180), 360, 0))
-		]),
-		cond(and(eq(state.finished, 1), isNotDragging), restartAnimation),
+		cond(
+			and(eq(gestureState, State.BEGAN), eq(config.duration, 2000)),
+			restartAnimation(
+				debug("pendingPosition", pendingPosition()),
+				debug("pendingDuration", pendingDuration),
+				false
+			)
+		),
+		cond(and(eq(state.finished, 1), isNotDragging), restartAnimation()),
 		state.position
 	]);
 };
 
-const runOpacityTimer = (clock, gestureState) => {
+const runScaleTimer = (clock, gestureState) => {
 	const state = {
 		finished: new Value(0),
 		position: new Value(0),
@@ -84,7 +111,7 @@ const runOpacityTimer = (clock, gestureState) => {
 	};
 
 	const config = {
-		duration: 100,
+		duration: 300,
 		toValue: new Value(-1),
 		easing: Easing.inOut(Easing.ease)
 	};
@@ -154,7 +181,7 @@ export default class DraggingFallinReanimated extends React.Component {
 		this._transX = interaction(gestureX, state);
 		this._transY = interaction(gestureY, state);
 
-		this.scale = runOpacityTimer(new Clock(), state);
+		this.scale = runScaleTimer(new Clock(), state);
 		this.rotate = runRotateTimer(new Clock(), state);
 	}
 
