@@ -4,7 +4,7 @@ import React from "react";
 import {StyleSheet, Text, View, Dimensions} from "react-native";
 import {PanGestureHandler, State} from "react-native-gesture-handler";
 const {width, height} = Dimensions.get("window");
-import Animated, {Easing} from "react-native-reanimated";
+import Animated, {Adaptable, Easing} from "react-native-reanimated";
 const {
 	cond,
 	eq,
@@ -35,7 +35,12 @@ const {
 	concat
 } = Animated;
 
-const runRotateTimer = (clock, gestureState) => {
+const runRotateTimer = (
+	clock,
+	gestureState,
+	spinDuration = 2000,
+	rotateDuration = 100
+) => {
 	const state = {
 		finished: new Value(0),
 		position: new Value(0),
@@ -44,7 +49,7 @@ const runRotateTimer = (clock, gestureState) => {
 	};
 
 	const config = {
-		duration: new Value(2000),
+		duration: new Value(spinDuration),
 		toValue: new Value(-1),
 		easing: Easing.linear
 	};
@@ -84,13 +89,13 @@ const runRotateTimer = (clock, gestureState) => {
 	// pendingRotate - x
 	const pendingDurationP = () => divide(pendingRotate(), 180);
 
-	const pendingDuration = multiply(pendingDurationP(), 300);
+	const pendingDuration = multiply(pendingDurationP(), rotateDuration);
 
 	return block([
 		cond(clockRunning(clock), 0, restartAnimation()),
 		timing(clock, state, config),
 		cond(
-			and(eq(gestureState, State.BEGAN), eq(config.duration, 2000)),
+			and(eq(gestureState, State.BEGAN), eq(config.duration, spinDuration)),
 			restartAnimation(
 				debug("pendingPosition", pendingPosition()),
 				debug("pendingDuration", pendingDuration),
@@ -102,18 +107,18 @@ const runRotateTimer = (clock, gestureState) => {
 	]);
 };
 
-const runScaleTimer = (clock, gestureState) => {
+const runScaleTimer = (clock, gestureState, duration) => {
 	const state = {
-		finished: new Value(0),
+		finished: new Value(1),
 		position: new Value(0),
 		time: new Value(0),
 		frameTime: new Value(0)
 	};
 
 	const config = {
-		duration: 300,
-		toValue: new Value(-1),
-		easing: Easing.inOut(Easing.ease)
+		duration: duration,
+		toValue: new Value(0),
+		easing: Easing.linear
 	};
 
 	return block([
@@ -138,6 +143,7 @@ const runScaleTimer = (clock, gestureState) => {
 			]
 		),
 		timing(clock, state, config),
+		// cond(eq(state.finished, 1), stopClock(clock)),
 		interpolate(state.position, {
 			inputRange: [0, 1],
 			outputRange: [1, 1.3]
@@ -229,8 +235,24 @@ function translateAnimationY(
 	]);
 }
 
-export default class DraggingFallinReanimated extends React.Component {
-	constructor(props) {
+type Props = {
+	initialY: number,
+	initialX: number,
+	fallingDuration: number,
+	onFall: ({x: number, y: number}) => void,
+	children: ?any
+};
+
+export default class DraggingFallingReanimated extends React.Component<Props> {
+	_transX: Animated.Value;
+	_transY: Animated.Value;
+
+	scale: Animated.Value;
+	rotate: Animated.Value;
+
+	_onGestureEvent: any;
+
+	constructor(props: Props) {
 		super(props);
 
 		const gestureX = new Value(0);
@@ -251,8 +273,8 @@ export default class DraggingFallinReanimated extends React.Component {
 		this._transX = translateAnimation(gestureX, state);
 		this._transY = translateAnimationY(gestureY, state);
 
-		this.scale = runScaleTimer(new Clock(), state);
-		this.rotate = runRotateTimer(new Clock(), state);
+		this.scale = runScaleTimer(new Clock(), state, 200);
+		this.rotate = runRotateTimer(new Clock(), state, 2000, 200);
 	}
 
 	render() {
