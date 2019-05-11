@@ -32,8 +32,19 @@ const {
 	debug,
 	Clock,
 	divide,
-	concat
+	concat,
+	defined,
+	greaterOrEq
 } = Animated;
+
+
+function delay(clock, time, node, nodeBefore = 0) {
+	const when = new Value();
+	return block([
+		cond(defined(when), 0, [set(when, add(clock, time))]),
+		cond(greaterOrEq(clock, when), node, nodeBefore),
+	]);
+}
 
 const runRotateTimer = (
 	clock,
@@ -200,39 +211,22 @@ function translateAnimationY(
 		eq(gestureState, State.BEGAN)
 	);
 
-	return block([
-		cond(
-			and(isNotDragging, not(clockRunning(clock))),
-			block([
-				set(config.toValue, toValue),
-				set(state.finished, 0),
-				set(state.time, 0),
-				set(state.frameTime, 0),
-				set(
-					config.duration,
-					multiply(duration, sub(1, divide(state.position, toValue)))
-				),
-				startClock(clock)
-			])
-		),
-		cond(isDragging, [
-			stopClock(clock),
-			set(state.finished, 1),
-			set(state.time, 0),
-			set(state.frameTime, 0)
-		]),
-		cond(
-			eq(gestureState, State.ACTIVE),
-			[
-				cond(dragging, 0, [set(dragging, 1), set(start, position)]),
-				set(position, add(start, gestureTranslation))
-			],
-			[set(dragging, 0)]
-		),
+	const delayed = new Value(0);
 
+	const translation = translateAnimation(gestureTranslation, gestureState);
+
+	return block([
+		cond(clockRunning(clock), 0, [
+			set(state.finished, 0),
+			set(state.time, 0),
+			set(state.position, 0),
+			set(state.frameTime, 0),
+			set(config.toValue, toValue),
+			startClock(clock),
+		]),
 		timing(clock, state, config),
-		position
-	]);
+		debug("value", add(translation, state.position))
+	])
 }
 
 type Props = {
