@@ -2,7 +2,7 @@ const Sound = require("react-native-sound");
 
 class MusicWrapper {
 	lastCommand = "";
-	isEnabled = false;
+	isEnabled = true;
 
 	constructor(musicFile, onLoad, onError) {
 		this.sound = new Sound(musicFile, Sound.MAIN_BUNDLE, error => {
@@ -16,7 +16,7 @@ class MusicWrapper {
 	}
 
 	_sendStateToSound = () => {
-		if (this.isEnabled) {
+		if (!this.isEnabled) {
 			return this.sound.stop();
 		}
 		switch (this.lastCommand) {
