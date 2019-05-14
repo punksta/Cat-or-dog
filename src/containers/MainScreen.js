@@ -119,20 +119,30 @@ import {
 	branch,
 	onlyUpdateForKeys,
 	renderNothing,
-	shouldUpdate
+	lifecycle
 } from "recompose";
 import {withNavigationFocus} from "react-navigation";
+import {setMainMenuMusicPlaying} from "../utils/music";
 
 const Connected = compose(
 	connect(
 		state => {
 			return {
+				isMusicEnabled: state.settings.isMusicEnabled,
 				isCustomGameVisible: state.levels.passedLevelsId.length > 4
 			};
 		},
 		mapDispatchToProps
 	),
 	withNavigationFocus,
+	lifecycle({
+		componentDidMount() {
+			setMainMenuMusicPlaying(this.props.isFocused && this.props.isMusicEnabled)
+		},
+		componentDidUpdate() {
+			setMainMenuMusicPlaying(this.props.isFocused && this.props.isMusicEnabled)
+		},
+	}),
 	onlyUpdateForKeys(["isFocused", "isCustomGameVisible"]),
 	branch(props => !props.isFocused, renderNothing)
 )(MainScreen);
