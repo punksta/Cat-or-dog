@@ -10,14 +10,14 @@ class MusicWrapper {
 				onLoad && onLoad(this.sound);
 				this._onLoaded();
 			} else {
-				onError && onError(error)
+				onError && onError(error);
 			}
 		});
 	}
 
 	_sendStateToSound = () => {
 		if (this.isEnabled) {
-			return this.sound.stop()
+			return this.sound.stop();
 		}
 		switch (this.lastCommand) {
 			case "shouldPlay": {
@@ -46,12 +46,10 @@ class MusicWrapper {
 		this._sendStateToSound();
 	};
 
-
 	shouldStop = () => {
 		this.lastCommand = "shouldStop";
 		this._sendStateToSound();
 	};
-
 
 	enable = () => {
 		this.isEnabled = true;
@@ -60,18 +58,16 @@ class MusicWrapper {
 	disable = () => {
 		this.isEnabled = false;
 		this._sendStateToSound();
-	}
+	};
 }
 
 const FailureCat = new Sound("angry_cat.mp3", Sound.MAIN_BUNDLE, error => {});
 
 const FailureDog = new Sound("angry_dog.was", Sound.MAIN_BUNDLE, error => {});
 
-const MainMenuMusic = new MusicWrapper(
-	"main_theme.mp3",
-	(sound) => sound.setNumberOfLoops(-1)
+const MainMenuMusic = new MusicWrapper("main_theme.mp3", sound =>
+	sound.setNumberOfLoops(-1)
 );
-
 
 export const playFailureCat = () => {
 	if (FailureCat.isPlaying()) {
@@ -91,8 +87,8 @@ export const playFailureDog = () => {
 
 export const setMainMenuMusicPlaying = shouldPlay => {
 	if (shouldPlay) {
-		MainMenuMusic.shouldPlay()
+		MainMenuMusic.shouldPlay();
 	} else {
-		MainMenuMusic.shouldPause()
+		MainMenuMusic.shouldPause();
 	}
 };

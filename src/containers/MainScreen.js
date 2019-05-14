@@ -137,11 +137,15 @@ const Connected = compose(
 	withNavigationFocus,
 	lifecycle({
 		componentDidMount() {
-			setMainMenuMusicPlaying(this.props.isFocused && this.props.isMusicEnabled)
+			setMainMenuMusicPlaying(
+				this.props.isFocused && this.props.isMusicEnabled
+			);
 		},
 		componentDidUpdate() {
-			setMainMenuMusicPlaying(this.props.isFocused && this.props.isMusicEnabled)
-		},
+			setMainMenuMusicPlaying(
+				this.props.isFocused && this.props.isMusicEnabled
+			);
+		}
 	}),
 	onlyUpdateForKeys(["isFocused", "isCustomGameVisible"]),
 	branch(props => !props.isFocused, renderNothing)
