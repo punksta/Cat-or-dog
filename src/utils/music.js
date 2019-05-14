@@ -15,6 +15,25 @@ class MusicWrapper {
 		});
 	}
 
+	intervalId = null;
+
+	shouldStopGradually = () => {
+		let volume = 1;
+
+		const delta = 0.05;
+		const duration = 2000;
+
+		this.intervalId = setInterval(() => {
+			volume = volume - delta;
+			console.log(volume);
+			this.sound.setVolume(volume);
+			if (volume <= 0) {
+				this.shouldStop(false);
+				clearInterval(this.intervalId);
+			}
+		}, duration * delta);
+	};
+
 	_sendStateToSound = () => {
 		if (!this.isEnabled) {
 			return this.sound.stop();
@@ -37,6 +56,8 @@ class MusicWrapper {
 	};
 
 	shouldPlay = () => {
+		clearInterval(this.intervalId);
+		this.sound.setVolume(1);
 		this.lastCommand = "shouldPlay";
 		this._sendStateToSound();
 	};
@@ -46,7 +67,10 @@ class MusicWrapper {
 		this._sendStateToSound();
 	};
 
-	shouldStop = () => {
+	shouldStop = (gradually = true) => {
+		if (gradually) {
+			return this.shouldStopGradually();
+		}
 		this.lastCommand = "shouldStop";
 		this._sendStateToSound();
 	};
@@ -89,6 +113,6 @@ export const setMainMenuMusicPlaying = shouldPlay => {
 	if (shouldPlay) {
 		MainMenuMusic.shouldPlay();
 	} else {
-		MainMenuMusic.shouldPause();
+		MainMenuMusic.shouldStop();
 	}
 };
