@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* sortGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* sortGameTests.m */; };
 		0F80D51A5F78FB2DD5374D21 /* libPods-sortGame-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 768F00D587C78645292D1F49 /* libPods-sortGame-tvOS.a */; };
@@ -17,11 +18,14 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* sortGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* sortGameTests.m */; };
-		7C34083931EDAD89D7ACBB7A /* libPods-sortGameTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DEB55126F7F86284D1CB307 /* libPods-sortGameTests.a */; };
-		E66FC2DD0E07F133D3FFE988 /* libPods-sortGame-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A826E4867A9A96DED6BD4E7A /* libPods-sortGame-tvOSTests.a */; };
 		35ACE812A89946368F9FE3C5 /* MavenPro-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8DD658D7A6F47939F542C86 /* MavenPro-Black.ttf */; };
-		DFED3F06493E415C95461B59 /* MavenPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C56FCA95211468AB3B487BD /* MavenPro-Bold.ttf */; };
 		3DD1B110A4404567B8449C14 /* MavenPro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BFF4EB66E3DE45DEA958E0D7 /* MavenPro-Medium.ttf */; };
+		4AE5662B23081AC700C3252C /* angry_cat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4AE5662823081AC700C3252C /* angry_cat.mp3 */; };
+		4AE5662C23081AC700C3252C /* angry_dog.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4AE5662923081AC700C3252C /* angry_dog.wav */; };
+		4AE5662D23081AC700C3252C /* main_theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4AE5662A23081AC700C3252C /* main_theme.mp3 */; };
+		7C34083931EDAD89D7ACBB7A /* libPods-sortGameTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DEB55126F7F86284D1CB307 /* libPods-sortGameTests.a */; };
+		DFED3F06493E415C95461B59 /* MavenPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C56FCA95211468AB3B487BD /* MavenPro-Bold.ttf */; };
+		E66FC2DD0E07F133D3FFE988 /* libPods-sortGame-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A826E4867A9A96DED6BD4E7A /* libPods-sortGame-tvOSTests.a */; };
 		EEA481D2529E4F3598CE67EF /* MavenPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C5E834AA58734364A4B96E74 /* MavenPro-Regular.ttf */; };
 /* End PBXBuildFile section */
 
@@ -55,8 +59,12 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = sortGame/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = sortGame/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = sortGame/main.m; sourceTree = "<group>"; };
+		1C56FCA95211468AB3B487BD /* MavenPro-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "MavenPro-Bold.ttf"; path = "../assets/fonts/MavenPro-Bold.ttf"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* sortGame-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sortGame-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* sortGame-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sortGame-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AE5662823081AC700C3252C /* angry_cat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = angry_cat.mp3; path = ../android/app/src/main/res/raw/angry_cat.mp3; sourceTree = "<group>"; };
+		4AE5662923081AC700C3252C /* angry_dog.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = angry_dog.wav; path = ../android/app/src/main/res/raw/angry_dog.wav; sourceTree = "<group>"; };
+		4AE5662A23081AC700C3252C /* main_theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = main_theme.mp3; path = ../android/app/src/main/res/raw/main_theme.mp3; sourceTree = "<group>"; };
 		4BD88B4CEA2C50D47B1956CE /* Pods-sortGameTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sortGameTests.debug.xcconfig"; path = "Target Support Files/Pods-sortGameTests/Pods-sortGameTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4C1645C69CA1625FDC279EF4 /* Pods-sortGame-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sortGame-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-sortGame-tvOSTests/Pods-sortGame-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5F89B34538CEE58AEC8F263B /* Pods-sortGame-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sortGame-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-sortGame-tvOS/Pods-sortGame-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -66,14 +74,13 @@
 		8B553BD538FA1926BB43F356 /* Pods-sortGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sortGame.release.xcconfig"; path = "Target Support Files/Pods-sortGame/Pods-sortGame.release.xcconfig"; sourceTree = "<group>"; };
 		A5C4E58B2E6CAEEBF79FF7F9 /* Pods-sortGame-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sortGame-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-sortGame-tvOSTests/Pods-sortGame-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		A826E4867A9A96DED6BD4E7A /* libPods-sortGame-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sortGame-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFF4EB66E3DE45DEA958E0D7 /* MavenPro-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "MavenPro-Medium.ttf"; path = "../assets/fonts/MavenPro-Medium.ttf"; sourceTree = "<group>"; };
+		C5E834AA58734364A4B96E74 /* MavenPro-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "MavenPro-Regular.ttf"; path = "../assets/fonts/MavenPro-Regular.ttf"; sourceTree = "<group>"; };
 		C9F17C9D6210217759B2D96D /* Pods-sortGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sortGame.debug.xcconfig"; path = "Target Support Files/Pods-sortGame/Pods-sortGame.debug.xcconfig"; sourceTree = "<group>"; };
+		E8DD658D7A6F47939F542C86 /* MavenPro-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "MavenPro-Black.ttf"; path = "../assets/fonts/MavenPro-Black.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F7BC25654D13E5B583EDF499 /* Pods-sortGame-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sortGame-tvOS.release.xcconfig"; path = "Target Support Files/Pods-sortGame-tvOS/Pods-sortGame-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		E8DD658D7A6F47939F542C86 /* MavenPro-Black.ttf */ = {isa = PBXFileReference; name = "MavenPro-Black.ttf"; path = "../assets/fonts/MavenPro-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		1C56FCA95211468AB3B487BD /* MavenPro-Bold.ttf */ = {isa = PBXFileReference; name = "MavenPro-Bold.ttf"; path = "../assets/fonts/MavenPro-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		BFF4EB66E3DE45DEA958E0D7 /* MavenPro-Medium.ttf */ = {isa = PBXFileReference; name = "MavenPro-Medium.ttf"; path = "../assets/fonts/MavenPro-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		C5E834AA58734364A4B96E74 /* MavenPro-Regular.ttf */ = {isa = PBXFileReference; name = "MavenPro-Regular.ttf"; path = "../assets/fonts/MavenPro-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,7 +175,6 @@
 				4BD88B4CEA2C50D47B1956CE /* Pods-sortGameTests.debug.xcconfig */,
 				7BF2672BE0244364B3B19551 /* Pods-sortGameTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -207,8 +213,11 @@
 			sourceTree = "<group>";
 		};
 		AEA096849A3D4F39AD0EA92E /* Resources */ = {
-			isa = "PBXGroup";
+			isa = PBXGroup;
 			children = (
+				4AE5662823081AC700C3252C /* angry_cat.mp3 */,
+				4AE5662923081AC700C3252C /* angry_dog.wav */,
+				4AE5662A23081AC700C3252C /* main_theme.mp3 */,
 				E8DD658D7A6F47939F542C86 /* MavenPro-Black.ttf */,
 				1C56FCA95211468AB3B487BD /* MavenPro-Bold.ttf */,
 				BFF4EB66E3DE45DEA958E0D7 /* MavenPro-Medium.ttf */,
@@ -216,7 +225,6 @@
 			);
 			name = Resources;
 			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
@@ -328,6 +336,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -358,10 +367,13 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				4AE5662D23081AC700C3252C /* main_theme.mp3 in Resources */,
 				35ACE812A89946368F9FE3C5 /* MavenPro-Black.ttf in Resources */,
+				4AE5662C23081AC700C3252C /* angry_dog.wav in Resources */,
 				DFED3F06493E415C95461B59 /* MavenPro-Bold.ttf in Resources */,
 				3DD1B110A4404567B8449C14 /* MavenPro-Medium.ttf in Resources */,
 				EEA481D2529E4F3598CE67EF /* MavenPro-Regular.ttf in Resources */,
+				4AE5662B23081AC700C3252C /* angry_cat.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

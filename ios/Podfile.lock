@@ -1,21 +1,27 @@
 PODS:
-  - appcenter (1.13.0):
+  - appcenter (2.2.0):
     - AppCenterReactNativeShared
     - React
-  - appcenter-analytics (1.13.0):
+  - appcenter-analytics (2.2.0):
     - AppCenter/Analytics
+    - AppCenterReactNativeShared
+    - React
+  - appcenter-crashes (2.2.0):
+    - AppCenter/Crashes
     - AppCenterReactNativeShared
     - React
   - AppCenter/Analytics (2.2.0):
     - AppCenter/Core
   - AppCenter/Core (2.2.0)
+  - AppCenter/Crashes (2.2.0):
+    - AppCenter/Core
   - AppCenterReactNativeShared (2.2.0):
     - AppCenter/Core (= 2.2.0)
   - boost-for-react-native (1.63.0)
-  - BugsnagReactNative (2.17.1):
-    - BugsnagReactNative/Core (= 2.17.1)
+  - BugsnagReactNative (2.22.5):
+    - BugsnagReactNative/Core (= 2.22.5)
     - React
-  - BugsnagReactNative/Core (2.17.1):
+  - BugsnagReactNative/Core (2.22.5):
     - React
   - BVLinearGradient (2.5.4):
     - React
@@ -108,8 +114,9 @@ PODS:
   - yoga (0.60.5.React)
 
 DEPENDENCIES:
-  - appcenter (from `../node_modules/appcenter/ios`)
-  - appcenter-analytics (from `../node_modules/appcenter-analytics/ios`)
+  - appcenter (from `../node_modules/appcenter`)
+  - appcenter-analytics (from `../node_modules/appcenter-analytics`)
+  - appcenter-crashes (from `../node_modules/appcenter-crashes`)
   - BugsnagReactNative (from `../node_modules/bugsnag-react-native`)
   - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
@@ -144,9 +151,11 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   appcenter:
-    :path: "../node_modules/appcenter/ios"
+    :path: "../node_modules/appcenter"
   appcenter-analytics:
-    :path: "../node_modules/appcenter-analytics/ios"
+    :path: "../node_modules/appcenter-analytics"
+  appcenter-crashes:
+    :path: "../node_modules/appcenter-crashes"
   BugsnagReactNative:
     :path: "../node_modules/bugsnag-react-native"
   BVLinearGradient:
@@ -200,11 +209,12 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AppCenter: c809e69d93218b9861b4f8e54ded8dcf4d2131e7
-  appcenter: 90f03022968d299d5c11a9488ac20fc2009098ea
-  appcenter-analytics: 6e09a01f3411335823ac59d1af5b840f5b8e8727
+  appcenter: d063bb98744a8352099746b3adcdcac96b246505
+  appcenter-analytics: 9b88d0afe15b9908431820b8046911c297409e2b
+  appcenter-crashes: 96c386fe361e2ec13267b563a205b5f051158121
   AppCenterReactNativeShared: 5751a607a8aa06ebf19b48bf9d92bf3a75dab04e
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
-  BugsnagReactNative: ead884e871d89eb97a0c9d96dd0ec436da696b9a
+  BugsnagReactNative: db30b61a889fa91980ee836e13505da60014259c
   BVLinearGradient: 8cbc5155c978f2e43098818c91d206d07aae6d30
   DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
   Folly: 30e7936e1c45c08d884aa59369ed951a8e68cf51

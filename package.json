@@ -10,17 +10,13 @@
     "flow": "flow check",
     "icon-generate": "app-icon generate --platforms=android"
   },
-  "rnpm": {
-    "assets": [
-      "./assets/fonts/"
-    ]
-  },
   "dependencies": {
     "react": "16.8.6",
     "react-native": "0.60.5",
-    "appcenter": "1.13.0",
-    "appcenter-analytics": "1.13.0",
-    "bugsnag-react-native": "^2.17.1",
+    "appcenter": "2.2.0",
+    "appcenter-analytics": "2.2.0",
+    "appcenter-crashes": "2.2.0",
+    "bugsnag-react-native": "^2.22.5",
     "memoizee": "^0.4.12",
     "react-native-console-time-polyfill": "0.0.6",
     "react-native-gesture-handler": "^1.1.0",
