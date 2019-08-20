@@ -95,6 +95,8 @@ def enableSeparateBuildPerCPUArchitecture = false
  */
 def enableProguardInReleaseBuilds = false
 
+def jscFlavor = 'org.webkit:android-jsc:+'
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -186,5 +188,11 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+
+preBuild.doFirst {
+    ant.replaceregexp(match:'android.support.v4.util.Pools;', replace:'androidx.core.util.Pools;', flags:'g', byline:true) {
+       fileset(dir: '../../node_modules/react-native-gesture-handler/android/src/main/java/com/swmansion/gesturehandler/react/', includes: '*.java')
+       }
+   }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)

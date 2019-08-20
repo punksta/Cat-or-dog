@@ -32,17 +32,6 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       List<ReactPackage> packages = new PackageList(this).getPackages();
-
-      List<ReactPackage> other  = Arrays.<ReactPackage>asList(
-            BugsnagReactNative.getPackage(),
-            new AppCenterReactNativeAnalyticsPackage(MainApplication.this, getResources().getString(R.string.appCenterAnalytics_whenToEnableAnalytics)),
-            new AppCenterReactNativePackage(MainApplication.this),
-            new RNSoundPackage(),
-            new RNGestureHandlerPackage(),
-            new LinearGradientPackage()
-      );
-
-      packages.addAll(packages);
       return packages;
     }
 
