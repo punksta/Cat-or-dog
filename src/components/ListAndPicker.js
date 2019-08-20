@@ -1,7 +1,14 @@
 //@flow
 import * as React from "react";
 import type {ViewLayout} from "ViewPropTypes";
-import {Picker, View, FlatList, StyleSheet, Image} from "react-native";
+import {
+	Picker,
+	View,
+	FlatList,
+	StyleSheet,
+	Image,
+	SafeAreaView
+} from "react-native";
 import PreviewItem from "./PreviewItem";
 import type {PhotoSource} from "../data";
 import StateFullPicker from "./StateFullPicker";
@@ -36,16 +43,15 @@ const ListAndPicker = ({
 }: Props) => {
 	return (
 		<View onLayout={onLayout} style={styles.root}>
-			<StateFullPicker
-				containerStyle={[
-					styles.picker,
-					{backgroundColor: pickerBackgroundColor}
-				]}
-				menuStyle={{backgroundColor: pickerBackgroundColor}}
-				values={availablePropepries}
-				selectedValue={selectedProperty}
-				onSelectItem={(item, index) => onValueChange(item, index)}
-			/>
+			<SafeAreaView style={{backgroundColor: pickerBackgroundColor}}>
+				<StateFullPicker
+					containerStyle={[styles.picker]}
+					menuStyle={{backgroundColor: pickerBackgroundColor}}
+					values={availablePropepries}
+					selectedValue={selectedProperty}
+					onSelectItem={(item, index) => onValueChange(item, index)}
+				/>
+			</SafeAreaView>
 			{width > 0 && (
 				<FlatList
 					ref={flatListRef}

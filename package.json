@@ -3,31 +3,27 @@
   "version": "1.0.3",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "start": "react-native start",
     "test": "jest",
     "prettier": "prettier --write \"{src,__{tests,mocks}__}/**/*.js\"",
     "prettier-check": "prettier --check \"{src,__{tests,mocks}__}/**/*.js\"",
     "flow": "flow check",
     "icon-generate": "app-icon generate --platforms=android"
   },
-  "rnpm": {
-    "assets": [
-      "./assets/fonts/"
-    ]
-  },
   "dependencies": {
-    "appcenter": "1.13.0",
-    "appcenter-analytics": "1.13.0",
-    "bugsnag-react-native": "^2.17.1",
+    "react": "16.8.6",
+    "react-native": "0.60.5",
+    "appcenter": "2.2.0",
+    "appcenter-analytics": "2.2.0",
+    "appcenter-crashes": "2.2.0",
+    "bugsnag-react-native": "^2.22.5",
     "memoizee": "^0.4.12",
-    "react": "16.8.3",
-    "react-native": "0.59.5",
     "react-native-console-time-polyfill": "0.0.6",
     "react-native-gesture-handler": "^1.1.0",
-    "react-native-linear-gradient": "^2.5.4",
+    "react-native-linear-gradient": "^2.5.6",
     "react-native-material-menu": "^0.4.0",
     "react-native-popup-dialog": "^0.15.0",
-    "react-native-sound": "^0.10.12",
+    "react-native-sound": "^0.11.0",
     "react-navigation": "^2.14.0",
     "react-redux": "^5.0.7",
     "recompose": "^0.29.0",
@@ -38,14 +34,16 @@
     "rxjs": "^6.3.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/runtime": "^7.5.5",
+    "@react-native-community/eslint-config": "^0.0.5",
+    "babel-jest": "^24.8.0",
+    "eslint": "^6.1.0",
+    "jest": "^24.8.0",
+    "metro-react-native-babel-preset": "^0.56.0",
+    "react-test-renderer": "16.8.6",
     "app-icon": "^0.6.3",
-    "flow-bin": "^0.92.0",
-    "@babel/core": "^7.4.3",
-    "@babel/runtime": "^7.4.3",
-    "babel-jest": "^24.7.1",
-    "jest": "^24.7.1",
-    "metro-react-native-babel-preset": "^0.53.1",
-    "react-test-renderer": "16.8.3",
+    "flow-bin": "^0.98.0",
     "prettier": "^1.17.0"
   },
   "jest": {

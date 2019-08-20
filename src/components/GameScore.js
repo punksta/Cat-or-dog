@@ -1,12 +1,12 @@
 import React from "react";
-import {Text, View, StyleSheet} from "react-native";
+import {Text, View, StyleSheet, SafeAreaView} from "react-native";
 import Heart from "./Heart";
 import {connect} from "react-redux";
 import {onlyUpdateForKeys} from "recompose";
 
 const GameScore = ({rightAnswerCount, lifeCount}) => {
 	return (
-		<View style={styles.root}>
+		<SafeAreaView style={styles.root}>
 			<View style={styles.heartWrapper}>
 				{Array.from(Array(lifeCount)).map((_, i) => {
 					return (
@@ -14,8 +14,10 @@ const GameScore = ({rightAnswerCount, lifeCount}) => {
 					);
 				})}
 			</View>
-			<Text style={styles.rightText}>{rightAnswerCount}</Text>
-		</View>
+			<View style={styles.rightTextWrapper}>
+				<Text style={styles.rightText}>{rightAnswerCount}</Text>
+			</View>
+		</SafeAreaView>
 	);
 };
 
@@ -25,18 +27,19 @@ const OptimizedGameScore = onlyUpdateForKeys(["rightAnswerCount", "lifeCount"])(
 
 const styles = StyleSheet.create({
 	rightText: {
-		position: "absolute",
-		end: 8,
-		top: 8,
-		height: 40,
-		width: 40,
 		textAlignVertical: "center",
-		textAlign: "center",
-		borderRadius: 25,
-		backgroundColor: "green",
 		fontWeight: "bold",
 		color: "white",
 		fontSize: 21
+	},
+	rightTextWrapper: {
+		height: 40,
+		width: 40,
+		textAlign: "center",
+		alignItems: "center",
+		justifyContent: "center",
+		borderRadius: 20,
+		backgroundColor: "green"
 	},
 	leftText: {
 		color: "white",
@@ -57,7 +60,9 @@ const styles = StyleSheet.create({
 	},
 	root: {
 		width: "100%",
-		height: 50
+		height: 50,
+		justifyContent: "space-between",
+		flexDirection: "row"
 	}
 });
 
