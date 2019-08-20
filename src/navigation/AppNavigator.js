@@ -18,11 +18,11 @@ const wrapInStackNavigator = (screen, title) => {
 			}
 		},
 		{
-			cardStyle: {backgroundColor: "transparent",     opacity: 1,},
+			cardStyle: {backgroundColor: "transparent", opacity: 1},
 			transitionConfig: () => ({
 				containerStyle: {
-					backgroundColor: 'transparent',
-				},
+					backgroundColor: "transparent"
+				}
 			})
 		}
 	);
@@ -61,8 +61,8 @@ export default (AppNavigator = createStackNavigator(
 		cardStyle: {backgroundColor: "transparent", opacity: 1},
 		transitionConfig: () => ({
 			containerStyle: {
-				backgroundColor: 'transparent',
-			},
+				backgroundColor: "transparent"
+			}
 		})
 	}
 ));

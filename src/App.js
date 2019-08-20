@@ -79,8 +79,8 @@ export default class Root extends React.Component {
 			<ImageBackground
 				style={{
 					flex: 1,
-					width: '100%',
-					height: '100%'
+					width: "100%",
+					height: "100%"
 				}}
 				source={require("./img/background.png")}
 			>
