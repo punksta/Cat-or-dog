@@ -4,7 +4,6 @@ import MainScreen from "../containers/MainScreen";
 import GameScreen from "../containers/GameScreen";
 import ResultsScreen from "../containers/ResultsScreen";
 import GameConfigurationScreen from "../containers/GameConfigurationScreen";
-import {Text} from "react-native";
 import LevelsScreen from "../containers/LevelsScreen";
 
 const wrapInStackNavigator = (screen, title) => {
@@ -19,7 +18,12 @@ const wrapInStackNavigator = (screen, title) => {
 			}
 		},
 		{
-			cardStyle: {backgroundColor: "transparent"}
+			cardStyle: {backgroundColor: "transparent",     opacity: 1,},
+			transitionConfig: () => ({
+				containerStyle: {
+					backgroundColor: 'transparent',
+				},
+			})
 		}
 	);
 };
@@ -54,6 +58,11 @@ export default (AppNavigator = createStackNavigator(
 		}
 	},
 	{
-		cardStyle: {backgroundColor: "transparent"}
+		cardStyle: {backgroundColor: "transparent", opacity: 1},
+		transitionConfig: () => ({
+			containerStyle: {
+				backgroundColor: 'transparent',
+			},
+		})
 	}
 ));

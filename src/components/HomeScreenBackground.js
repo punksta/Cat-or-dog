@@ -226,6 +226,7 @@ class HomeScreenBackground extends React.Component<Props, State> {
 	}
 
 	render() {
+		return null;
 		return (
 			<View
 				style={{
