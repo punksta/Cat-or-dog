@@ -17,7 +17,7 @@
   "dependencies": {
     "memoizee": "^0.4.12",
     "react": "16.8.3",
-    "react-native": "0.59.4",
+    "react-native": "0.62.3",
     "react-native-console-time-polyfill": "0.0.6",
     "react-native-gesture-handler": "^1.1.0",
     "react-native-linear-gradient": "^2.5.4",
